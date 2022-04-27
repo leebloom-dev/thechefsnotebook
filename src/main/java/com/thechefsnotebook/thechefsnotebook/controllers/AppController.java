@@ -16,7 +16,7 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/list_contact")
+    @RequestMapping("/contact")
     public String listContact(Model model) {
 
         // Getting the list of contacts from Class ContactBusiness
