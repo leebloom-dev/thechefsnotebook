@@ -12,10 +12,12 @@ a {
     color: lightblue;
 }
 
-table {
-    border: 1px;
+table, th, td {
+    padding: 10px;
+    border: 1px solid white;
 }
 
-th, td {
-    padding: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }

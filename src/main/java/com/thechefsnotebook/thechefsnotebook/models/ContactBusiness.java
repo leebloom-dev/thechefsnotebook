@@ -10,10 +10,10 @@ public class ContactBusiness {
 
         List<Contact> listContact = new ArrayList<>();
 
-        listContact.add(new Contact("Sana Oi", "sana.oi@gmail.com", "Japan"));
-        listContact.add(new Contact("Young-soon Yamamoto", "youngsoon.yamamoto@gmail.com", "Japan"));
-        listContact.add(new Contact("Dasom Yoon", "dasom.yoon@gmail.com", "South Korea"));
-        listContact.add(new Contact("Jamine Bloom", "jamie.bloom@gmail.com", "United States"));
+        listContact.add(new Contact("Sakura Haruna", "sakura.haruna@gmail.com", "Japan"));
+        listContact.add(new Contact("Ryoko Habuki", "ryoko.habuki@gmail.com", "Japan"));
+        listContact.add(new Contact("Moon Jae-in", "moon.jae-in@gmail.com", "South Korea"));
+        listContact.add(new Contact("Spongebob Squarpants", "spongebob.squarepants@gmail.com", "United States"));
 
         return listContact;
 
