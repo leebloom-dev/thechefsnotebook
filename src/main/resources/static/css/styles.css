@@ -4,6 +4,18 @@ body {
     color: white;
 }
 
+h1 {
+    align: center;
+}
+
 a {
     color: lightblue;
+}
+
+table {
+    border: 1px;
+}
+
+th, td {
+    padding: 10px;
 }

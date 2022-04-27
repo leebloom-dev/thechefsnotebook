@@ -7,11 +7,11 @@ public class Contact {
     private String country;
 
     public Contact() {
-//        super();
+        super();
     }
 
     public Contact(String name, String email, String country) {
-//        super();
+        super();
         this.name = name;
         this.email = email;
         this.country = country;
