@@ -11,6 +11,11 @@ import java.util.List;
 @Controller
 public class AppController {
 
+    @RequestMapping("/")
+    public String welcome() {
+        return "index";
+    }
+
     @RequestMapping("/list_contact")
     public String listContact(Model model) {
 
@@ -21,7 +26,7 @@ public class AppController {
         // adding the contact list to model's attribute "contacts"
         model.addAttribute("contacts", contactList);
 
-        return "contacts";
+        return "contact";
 
     }
 

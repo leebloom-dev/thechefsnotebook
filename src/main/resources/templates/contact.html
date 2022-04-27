@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Contact List</title>
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
     <h1>My Contact List</h1>
@@ -17,7 +18,9 @@
         </thead>
         <tbody>
             <tr th:each="contact : ${contacts}">
-                <td></td>
+                <td th:text="${contact.name}">Name</td>
+                <td th:text="${contact.email}">Email</td>
+                <td th:text="${contact.country}">Country</td>
             </tr>
         </tbody>
     </table>
