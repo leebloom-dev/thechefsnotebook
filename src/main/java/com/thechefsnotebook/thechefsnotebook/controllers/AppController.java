@@ -16,18 +16,4 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/contact")
-    public String listContact(Model model) {
-
-        // Getting the list of contacts from Class ContactBusiness
-        ContactBusiness business = new ContactBusiness();
-        List<Contact> contactList = business.getContactList();
-
-        // adding the contact list to model's attribute "contacts"
-        model.addAttribute("contacts", contactList);
-
-        return "contact";
-
-    }
-
 }
