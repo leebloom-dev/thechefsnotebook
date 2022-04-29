@@ -7,6 +7,18 @@
 </head>
 <body>
 
+    <!-- HEADER -->
+    <h1>Navigation</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/destinations/form">Destination Form</a></li>
+        <li><a href="/greeting">Greeting</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+    <hr>
+
+    <!-- BODY CONTENT -->
+    <h1>Greeting Page</h1>
     <p>Hey, this greeting is not using Thymeleaf!!!</p>
     <p th:text="'Hey ' + ${name} + '! I am using Thymeleaf.'"></p>
 
