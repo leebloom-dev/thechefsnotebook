@@ -5,13 +5,13 @@ import java.util.List;
 
 public class ContactBusiness {
 
-    // Returns hard-coded List of Contact objects.
+    // Returns a List of Contact objects.
     public List<Contact> getContactList() {
 
+        // Creating a new empty Array List
         List<Contact> listContact = new ArrayList<>();
 
-        listContact.add(new Contact("Sakura Haruna", "sakura.haruna@gmail.com", "Japan"));
-
+        // Returning the Array List
         return listContact;
 
     }

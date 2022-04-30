@@ -35,7 +35,7 @@ public class ContactFormController {
         contactList.add(new Contact(name, email, country));
         model.addAttribute("contacts", contactList);
 
-        return "contact";
+        return "contactFormSubmitted";
 
     }
 
