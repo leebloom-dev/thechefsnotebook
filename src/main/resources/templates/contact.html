@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <title>Contact List</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+<head th:replace="fragments :: head">
 </head>
 <body>
 
@@ -27,7 +24,7 @@
         </thead>
         <tbody>
             <tr th:each="contact : ${contacts}">
-                <td th:text="${contact.name}">Name</td>
+                <td th:text="${contact.name}">Name</td> <!-- ".name" Thymeleaf assumes getName() method  -->
                 <td th:text="${contact.email}">Email</td>
                 <td th:text="${contact.country}">Country</td>
             </tr>

@@ -20,13 +20,15 @@ public class ContactController {
     // Lives at /contact
     @GetMapping
     public String displayAllContacts(Model model) {
+        model.addAttribute("title", "Contact");
         model.addAttribute("contacts", contacts);
         return "contact";
     }
 
     // Lives at /contact/form
     @GetMapping("form")
-    public String renderContactForm() {
+    public String renderContactForm(Model model) {
+        model.addAttribute("title", "Contact Form");
         // returns to contactForm.html
         return "contactForm";
     }
