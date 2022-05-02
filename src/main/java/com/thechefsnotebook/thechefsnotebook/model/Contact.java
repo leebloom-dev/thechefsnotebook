@@ -2,22 +2,32 @@ package com.thechefsnotebook.thechefsnotebook.model;
 
 public class Contact {
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String country;
 
-    public Contact(String name, String email, String country) {
-        this.name = name;
+    public Contact(String firstName, String lastName, String email, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.country = country;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

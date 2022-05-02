@@ -22,7 +22,7 @@ public class ContactController {
     public String displayAllContacts(Model model) {
         model.addAttribute("title", "Contact");
         model.addAttribute("contacts", contacts);
-        return "contact";
+        return "/contacts/contact";
     }
 
     // Lives at /contact/form
@@ -30,18 +30,27 @@ public class ContactController {
     public String renderContactForm(Model model) {
         model.addAttribute("title", "Contact Form");
         // returns to contactForm.html
-        return "contactForm";
+        return "contacts/contactForm";
     }
 
     // Lives at /contacts/form
     @PostMapping("form")
-    public String createContact(@RequestParam String contactName,
+    public String createContact(@RequestParam String contactFirstName,
+                                @RequestParam String contactLastName,
                                 @RequestParam String contactEmail,
                                 @RequestParam String contactCountry) {
 
-        contacts.add(new Contact(contactName, contactEmail, contactCountry));
-        return "redirect:"; // redirect to URL path
+        contacts.add(new Contact(
+                contactFirstName,
+                contactLastName,
+                contactEmail,
+                contactCountry)
+        );
+
+        return "redirect:"; // redirect to this class's URL path
 
     }
+
+    // Lives at /contacts/search
 
 }
