@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title th:text="${title}">Default Title</title> <!-- title in controller -->
 </head>
 <body>
 
     <!--  NAVIGATION  -->
     <nav th:fragment="navigation">
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li> <!-- href is URL address -->
             <li><a href="/contact">Contact</a></li>
             <li><a href="/contact/form">Contact Form</a></li>
         </ul>
