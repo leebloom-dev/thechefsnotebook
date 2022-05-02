@@ -27,10 +27,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><th:block th:each="contactName : ${contactNames}"><p th:text="${contactName}">Name</p></th:block></td>
-                <td><th:block th:each="contactEmail : ${contactEmails}"><p th:text="${contactEmail}">Email</p></th:block></td>
-                <td><th:block th:each="contactCountry : ${contactCountries}"><p th:text="${contactCountry}">Country</p></th:block></td>
+<!--            <tr>-->
+<!--                <td><th:block th:each="contactName : ${contactNames}"><p th:text="${contactName}">Name</p></th:block></td>-->
+<!--                <td><th:block th:each="contactEmail : ${contactEmails}"><p th:text="${contactEmail}">Email</p></th:block></td>-->
+<!--                <td><th:block th:each="contactCountry : ${contactCountries}"><p th:text="${contactCountry}">Country</p></th:block></td>-->
+<!--            </tr>-->
+
+            <tr th:each="contact : ${contacts}">
+                <td th:text="${contact.name}">Name</td>
+                <td th:text="${contact.email}">Email</td>
+                <td th:text="${contact.country}">Country</td>
             </tr>
         </tbody>
     </table>
