@@ -14,15 +14,24 @@
     <br>
     <form action="/contact/form" method="post">
     <!-- Form submits to controller with URL /contact/form -->
-        <label for="contactFirstName">First Name: </label><br>
-        <input type="text" id="contactFirstName" name="contactFirstName" placeholder="First Name" /><br>
-        <label for="contactLastName">Last Name: </label><br>
-        <input type="text" id="contactLastName" name="contactLastName" placeholder="Last Name" /><br>
-        <label for="contactEmail">Email: </label><br>
-        <input type="text" id="contactEmail" name="contactEmail" placeholder="Email" /><br>
-        <label for="contactCountry">Country: </label><br>
-        <input type="text" id="contactCountry" name="contactCountry" placeholder="Country" /><br><br>
-        <input type="submit" value="submit" />
+        <div class="form-group">
+            <label for="contactFirstName">First Name: </label><br>
+            <input type="text" id="contactFirstName" name="contactFirstName" placeholder="First Name" />
+        </div>
+        <div class="form-group">
+            <label for="contactLastName">Last Name: </label><br>
+            <input type="text" id="contactLastName" name="contactLastName" placeholder="Last Name" />
+        </div>
+        <div class="form-group">
+            <label for="contactEmail">Email: </label><br>
+            <input type="text" id="contactEmail" name="contactEmail" placeholder="Email" />
+        </div>
+        <div class="form-group">
+            <label for="contactCountry">Country: </label><br>
+            <input type="text" id="contactCountry" name="contactCountry" placeholder="Country" />
+        </div>
+        <br>
+        <input class="btn btn-primary" type="submit" value="submit" />
     </form>
 
 </body>
