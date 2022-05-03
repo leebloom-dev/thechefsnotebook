@@ -14,11 +14,13 @@
 
     <!-- Search Contacts -->
     <h1>Search Contacts</h1>
-    <form>
-        <lable for="firstName">First Name: </lable><br>
-        <input id="firstName" type="text" placeholder="First Name" /><br>
-        <lable for="lastName">Last Name: </lable><br>
-        <input id="lastName" type="text" placeholder="Last Name" /><br><br>
+    <br>
+    <!-- Posts first name and last name to controller at /contact/search -->
+    <form method="post" action="/contact/search">
+        <label for="firstName">First Name: </label><br>
+        <input id="firstName" type="text" name="contactFirstName" placeholder="First Name" /><br>
+        <label for="lastName">Last Name: </label><br>
+        <input id="lastName" type="text" name="contactLastName" placeholder="Last Name" /><br><br>
         <input type="submit" value="submit" />
     </form>
     <hr>
@@ -26,7 +28,7 @@
     <h1>My Contact List</h1>
     <br>
 
-    <!--  Table of Contacts  -->
+    <!--  Contacts Table  -->
     <table>
         <thead>
             <tr>
