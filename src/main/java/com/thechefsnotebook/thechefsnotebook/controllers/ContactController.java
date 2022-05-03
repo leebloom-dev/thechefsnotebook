@@ -66,7 +66,8 @@ public class ContactController {
         // Empty Array List to hold searched contacts
         List<Contact> searchContacts = new ArrayList<>();
 
-        // TODO: Conditional code that searches first/last name from contacts
+        // TODO: Include a unique id for each contact.
+        // TODO: Delete contact(s) feature
 
         for (Contact contact : contacts) {
 
