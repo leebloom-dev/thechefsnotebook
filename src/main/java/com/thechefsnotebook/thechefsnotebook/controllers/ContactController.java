@@ -67,30 +67,29 @@ public class ContactController {
         List<Contact> searchContacts = new ArrayList<>();
 
         // TODO: Conditional code that searches first/last name from contacts
+
         for (Contact contact : contacts) {
 
-            // Condition: first name match AND last name no match
-            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) &&
-                    !(contact.getLastName().equalsIgnoreCase(contactLastName))) {
-                break;
-            }
-
-            // Condition: first name no match AND last name match
-            if (!(contact.getFirstName().equalsIgnoreCase(contactFirstName)) &&
-                    contact.getLastName().equalsIgnoreCase(contactLastName)) {
-                break;
-            }
-
-            // Condition: first name OR last name match
-            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) ||
-                    contact.getLastName().equalsIgnoreCase(contactLastName)) {
+            // Condition: first name match AND last name empty
+            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) && contactLastName.isEmpty()) {
                 searchContacts.add(contact);
+                model.addAttribute("contacts", searchContacts);
+            }
+
+            // Condition: first name empty AND last name match
+            if (contactFirstName.isEmpty() && contact.getLastName().equalsIgnoreCase(contactLastName)) {
+                searchContacts.add(contact);
+                model.addAttribute("contacts", searchContacts);
+            }
+
+            // Condition: first name AND last name match
+            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) && contact.getLastName().equalsIgnoreCase(contactLastName)) {
+                searchContacts.add(contact);
+                model.addAttribute("contacts", searchContacts);
             }
 
         }
 
-        // Add attribute value to model to determine if there are items in Array List
-        model.addAttribute("contacts", searchContacts);
         return "/contacts/contactSearch";
 
     }
