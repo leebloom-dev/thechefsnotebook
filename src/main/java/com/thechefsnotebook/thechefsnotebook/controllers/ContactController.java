@@ -67,20 +67,30 @@ public class ContactController {
         List<Contact> searchContacts = new ArrayList<>();
 
         // TODO: Conditional code that searches first/last name from contacts
-        for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getFirstName().toLowerCase().equals(contactFirstName.toLowerCase()) &&
-                    contacts.get(i).getLastName().toLowerCase().equals(contactLastName.toLowerCase())) {
-                // add the contact information from an index to the searchContact Array List
-                searchContacts.add(contacts.get(i));
+        for (Contact contact : contacts) {
+
+            // Condition: first name match AND last name no match
+            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) &&
+                    !(contact.getLastName().equalsIgnoreCase(contactLastName))) {
+                break;
             }
+
+            // Condition: first name no match AND last name match
+            if (!(contact.getFirstName().equalsIgnoreCase(contactFirstName)) &&
+                    contact.getLastName().equalsIgnoreCase(contactLastName)) {
+                break;
+            }
+
+            // Condition: first name OR last name match
+            if (contact.getFirstName().equalsIgnoreCase(contactFirstName) ||
+                    contact.getLastName().equalsIgnoreCase(contactLastName)) {
+                searchContacts.add(contact);
+            }
+
         }
 
-        // Add attribute value to model to determine if there is items in Array List
-        if (searchContacts.size() != 0) {
-            model.addAttribute("contacts", searchContacts);
-        } else {
-            model.addAttribute("contacts", "Damn you got nothing");
-        }
+        // Add attribute value to model to determine if there are items in Array List
+        model.addAttribute("contacts", searchContacts);
         return "/contacts/contactSearch";
 
     }
