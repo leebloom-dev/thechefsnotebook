@@ -4,15 +4,14 @@
 </head>
 <body>
 
-    <!-- HEADER -->
-    <h1>Navigation</h1>
+<!-- HEADER -->
+    <!-- Navigation -->
     <nav th:replace="fragments :: navigation"></nav>
-    <hr>
 
-    <!-- Body Content -->
+<!-- BODY CONTENT -->
     <h1>Contact Form</h1>
     <br>
-    <form action="/contact/form" method="post">
+    <form method="post" action="/contact/form">
     <!-- Form submits to controller with URL /contact/form -->
         <div class="form-group">
             <label for="contactFirstName">First Name: </label><br>

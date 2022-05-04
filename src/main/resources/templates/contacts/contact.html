@@ -6,18 +6,19 @@
 
 <!-- HEADER -->
 
-    <h1>Navigation</h1>
+    <!-- Navigation -->
     <nav th:replace="fragments :: navigation"></nav>
-    <hr>
 
 <!-- BODY CONTENT -->
 
     <!-- Search Contacts -->
     <h1>Search Contacts</h1>
+
     <br>
+
     <!-- Posts first name and last name to controller at /contact/search -->
-    <p>Enter first and last name to search.</p>
-    <form method="post" action="/contact/search">
+    <p>Enter first and/or last name to search.</p>
+    <form method="post" action="/contact">
         <div class="form-group">
             <label for="firstName">First Name: </label><br>
             <input id="firstName" type="text" name="contactFirstName" placeholder="First Name" />
@@ -29,9 +30,12 @@
         <br>
         <input class="btn btn-primary" type="submit" value="submit" />
     </form>
+
     <hr>
 
-    <h1>My Contact List</h1>
+    <h1 th:if="${!isSearching}">My Contact List</h1>
+    <h1 th:if="${isSearching}">My Contacts List Filtered</h1>
+
     <br>
 
     <!--  Contacts Table  -->
