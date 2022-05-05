@@ -1,5 +1,6 @@
 package com.thechefsnotebook.thechefsnotebook.controllers;
 
+import com.thechefsnotebook.data.ContactData;
 import com.thechefsnotebook.thechefsnotebook.model.Contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +16,16 @@ import java.util.List;
 @RequestMapping("contact")
 public class ContactController {
 
-    private static List<Contact> contacts = new ArrayList<>();
+    // private static List<Contact> contacts = new ArrayList<>();
 
     // Lives at /contact
     @GetMapping
     public String displayAllContacts(Model model) {
         // displaying conditional html
         boolean isSearching = false;
-
         model.addAttribute("isSearching", isSearching);
         model.addAttribute("title", "Contact");
-        model.addAttribute("contacts", contacts);
+        model.addAttribute("contacts", ContactData.getAll());
         return "/contacts/contact"; // HTML path
     }
 
@@ -44,7 +44,7 @@ public class ContactController {
         // TODO: Include a unique id for each contact.
         // TODO: Delete contact(s) feature
 
-        for (Contact contact : contacts) {
+        for (Contact contact : ContactData.getAll()) {
 
             // Condition: first name match AND last name empty
             if (contact.getFirstName().equalsIgnoreCase(contactFirstName) && contactLastName.isEmpty()) {
@@ -85,12 +85,12 @@ public class ContactController {
                                 @RequestParam String contactEmail,
                                 @RequestParam String contactCountry) {
 
-        contacts.add(new Contact(
-                contactFirstName,
-                contactLastName,
-                contactEmail,
-                contactCountry)
-        );
+        ContactData.add(new Contact(
+            contactFirstName,
+            contactLastName,
+            contactEmail,
+            contactCountry
+        ));
 
         return "redirect:"; // redirect to this class's URL path
 
