@@ -41,9 +41,6 @@ public class ContactController {
         // Empty Array List to hold searched contacts
         List<Contact> contactsSearched = new ArrayList<>();
 
-        // TODO: Include a unique id for each contact.
-        // TODO: Delete contact(s) feature
-
         for (Contact contact : ContactData.getAll()) {
 
             // Condition: first name match AND last name empty
