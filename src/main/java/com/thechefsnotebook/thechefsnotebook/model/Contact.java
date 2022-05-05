@@ -2,6 +2,9 @@ package com.thechefsnotebook.thechefsnotebook.model;
 
 public class Contact {
 
+    private int id;
+    private static int nextId = 1;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -12,6 +15,12 @@ public class Contact {
         this.lastName = lastName;
         this.email = email;
         this.country = country;
+        this.id = nextId;
+        nextId++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
