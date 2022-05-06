@@ -1,6 +1,6 @@
 package com.thechefsnotebook.thechefsnotebook.controllers;
 
-import com.thechefsnotebook.data.ContactData;
+import com.thechefsnotebook.thechefsnotebook.data.ContactData;
 import com.thechefsnotebook.thechefsnotebook.model.Contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

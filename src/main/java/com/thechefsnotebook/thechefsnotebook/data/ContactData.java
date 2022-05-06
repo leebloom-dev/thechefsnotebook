@@ -1,4 +1,4 @@
-package com.thechefsnotebook.data;
+package com.thechefsnotebook.thechefsnotebook.data;
 
 import java.util.Collection;
 import java.util.HashMap;
