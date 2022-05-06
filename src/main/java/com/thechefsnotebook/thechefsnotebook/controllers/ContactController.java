@@ -1,6 +1,6 @@
 package com.thechefsnotebook.thechefsnotebook.controllers;
 
-import com.thechefsnotebook.data.ContactData;
+import com.thechefsnotebook.thechefsnotebook.data.ContactData;
 import com.thechefsnotebook.thechefsnotebook.model.Contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,9 +40,6 @@ public class ContactController {
 
         // Empty Array List to hold searched contacts
         List<Contact> contactsSearched = new ArrayList<>();
-
-        // TODO: Include a unique id for each contact.
-        // TODO: Delete contact(s) feature
 
         for (Contact contact : ContactData.getAll()) {
 
