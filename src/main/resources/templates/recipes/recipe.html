@@ -22,8 +22,27 @@
                         <input type="text" name="description" class="form-control" placeholder="Description" />
                     </label>
                     <input class="btn btn-primary" type="submit" value="submit" />
+                    <input class="btn btn-warning" type="submit" value="remove" th:if="${recipes.size() > 0}" />
                 </div>
             </form>
+
+            <!-- Display a Recipes -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipe : ${recipes}">
+                        <td th:text="${recipe.id}">ID</td>
+                        <td th:text="${recipe.name}">Recipe</td>
+                        <td th:text="${recipe.description}">Description</td>
+                    </tr>
+                </tbody>
+            </table>
             
     </body>
 </html>

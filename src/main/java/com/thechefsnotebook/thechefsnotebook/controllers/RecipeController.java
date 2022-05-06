@@ -1,5 +1,8 @@
 package com.thechefsnotebook.thechefsnotebook.controllers;
 
+import com.thechefsnotebook.thechefsnotebook.data.RecipeData;
+import com.thechefsnotebook.thechefsnotebook.model.Recipe;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +16,9 @@ public class RecipeController {
 
     // Lives at "/recipe"
     @GetMapping
-    public String displayAllRecipes() {
-        return "recipe";
+    public String displayAllRecipes(Model model) {
+        model.addAttribute("recipes", RecipeData.getAll());
+        return "recipes/recipe";
     }
     
     // Lives at "/recipe"
@@ -23,9 +27,9 @@ public class RecipeController {
                                 @RequestParam String description,
                                 Model model) {
 
-        model.addAttribute("name", name);
-        model.addAttribute("description", description);
-        return "redirect:"; // redirect to "/recipe"
+        // add user input to Recipe Data
+        RecipeData.add(new Recipe(name, description));
+        return "redirect:/recipe"; // redirect to "/recipe"
 
     }
 }
