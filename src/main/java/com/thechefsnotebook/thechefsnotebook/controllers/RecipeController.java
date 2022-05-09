@@ -24,8 +24,7 @@ public class RecipeController {
     // Lives at "/recipe"
     @PostMapping
     public String createRecipe( @RequestParam String recipeName, 
-                                @RequestParam String cuisineType,
-                                Model model) {
+                                @RequestParam String cuisineType) {
 
         // add user input to Recipe Data
         RecipeData.add(new Recipe(recipeName, cuisineType));
@@ -36,6 +35,7 @@ public class RecipeController {
     // Lives at "/recipe/delete"
     @GetMapping("delete")
     public String renderDeleteEventForm(Model model) {
+        model.addAttribute("Title", "Delete Recipe");
         model.addAttribute("recipes", RecipeData.getAll());
         return "recipes/delete";
     }
