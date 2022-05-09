@@ -9,7 +9,7 @@ public class Recipe {
     private String cuisineType;
 
     public Recipe(String recipeName, String cuisineType) {
-        this.id = nextId;
+        this.id = this.nextId;
         this.recipeName = recipeName;
         this.cuisineType = cuisineType;
         nextId++;
@@ -34,7 +34,5 @@ public class Recipe {
     public void setCuisineType(String cuisineType) {
         this.cuisineType = cuisineType;
     }
-
-    
 
 }
