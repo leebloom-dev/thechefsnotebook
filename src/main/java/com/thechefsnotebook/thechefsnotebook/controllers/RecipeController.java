@@ -23,7 +23,8 @@ public class RecipeController {
     
     // Lives at "/recipe/form"
     @GetMapping("form")
-    public String renderRecipeForm() {
+    public String renderRecipeForm(Model model) {
+        model.addAttribute("Title", "Recipe Form");
         return "recipes/form";
     }
 
