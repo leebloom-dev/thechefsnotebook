@@ -29,37 +29,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact/form">Contact Form</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/recipe">Recipe</a>
-                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Recipes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/recipe">Recipe Table</a>
+                      <a class="dropdown-item" href="/recipe/form">Recipe Form</a>
+                      <a class="dropdown-item" href="/recipe/delete">Remove Recipe</a>
+                    </div>
+                  </li>
             </ul>
         </div>
     </nav>
 
 <!-- BODY CONTENT -->
 
-    <!--  Contacts Table  -->
-    <table th:fragment="contactsTable" class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="contact : ${contacts}">
-                <td th:text="${contact.id}">ID</td>
-                <!-- ".firstName" Thymeleaf assumes getName() method  -->
-                <td th:text="${contact.firstName}">First Name</td>
-                <td th:text="${contact.lastName}">Last Name</td>
-                <td th:text="${contact.email}">Email</td>
-                <td th:text="${contact.country}">Country</td>
-            </tr>
-        </tbody>
-    </table>
+    
 
 <!-- FOOTER -->
 

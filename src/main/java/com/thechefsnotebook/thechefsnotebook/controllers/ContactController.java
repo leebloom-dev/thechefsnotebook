@@ -16,8 +16,6 @@ import java.util.List;
 @RequestMapping("contact")
 public class ContactController {
 
-    // private static List<Contact> contacts = new ArrayList<>();
-
     // Lives at /contact
     @GetMapping
     public String displayAllContacts(Model model) {
@@ -89,7 +87,7 @@ public class ContactController {
             contactCountry
         ));
 
-        return "redirect:"; // redirect to this class's URL path
+        return "redirect:/contact"; // redirect to this class's URL path
 
     }
 

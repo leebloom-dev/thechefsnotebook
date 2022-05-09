@@ -3,13 +3,13 @@ package com.thechefsnotebook.thechefsnotebook.model;
 public class Recipe {
 
     private int id;
-    private int nextId = 1;
+    private static int nextId = 1;
 
     private String recipeName;
     private String cuisineType;
 
     public Recipe(String recipeName, String cuisineType) {
-        this.id = this.nextId;
+        this.id = nextId;
         this.recipeName = recipeName;
         this.cuisineType = cuisineType;
         nextId++;

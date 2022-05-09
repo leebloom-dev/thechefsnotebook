@@ -10,50 +10,6 @@
 
         <!-- BODY CONTENT -->
 
-            <!-- Recipe Form  -->
-            <div class="container" id="recipeFormContainer">
-
-                <div class="row">
-
-                    <!-- Recipe Form -->
-                    <div class="card" id="recipeForm">   
-                        <form method="post" action="/recipe">
-
-                            <!-- Input Recipe Name -->
-                            <div class="form-group">
-                                <label for="inputRecipeName">Recipe Name:</label>
-                                <input class="form-control" id="inputRecipeName" type="text" placeholder="Recipe Name" name="recipeName" />
-                            </div>
-
-                            <!-- Input Cuisine Type -->
-                            <div>
-                                <label for="inputCuisineType">Cuisine Type:</label>
-                                <input class="form-control" id="inputCuisineType" type="text" placeholder="Cuisine Type" name="cuisineType" />
-                            </div>
-                            <br>
-
-                            <!-- Button sends input data to controller @"/recipe" -->
-                            <input class="btn btn-primary" type="submit" value="submit" />
-                            
-                        </form>
-                    </div>
-
-                </div>
-                <br>
-
-                <!-- Link to deleting recipe(s) -->
-                <div class="row">
-                    <div class="card">
-                        To delete recipe(s):
-                        <a href="/recipe/delete">
-                            <input class="btn btn-warning" type="button" value="delete" />
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-            <br>
-
             <!-- Display a Recipes -->
             <div class="container">
                 <table class="table">
@@ -61,7 +17,7 @@
                         <tr>
                             <th>#</th>
                             <th>Recipe</th>
-                            <th>Description</th>
+                            <th>Cuisine</th>
                         </tr>
                     </thead>
                     <tbody>

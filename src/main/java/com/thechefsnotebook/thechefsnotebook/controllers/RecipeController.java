@@ -21,8 +21,15 @@ public class RecipeController {
         return "recipes/recipe";
     }
     
-    // Lives at "/recipe"
-    @PostMapping
+    // Lives at "/recipe/form"
+    @GetMapping("form")
+    public String renderRecipeForm(Model model) {
+        model.addAttribute("Title", "Recipe Form");
+        return "recipes/form";
+    }
+
+    // Lives at "/recipe/form"
+    @PostMapping("form")
     public String createRecipe( @RequestParam String recipeName, 
                                 @RequestParam String cuisineType) {
 
