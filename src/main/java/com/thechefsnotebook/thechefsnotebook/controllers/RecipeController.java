@@ -23,13 +23,33 @@ public class RecipeController {
     
     // Lives at "/recipe"
     @PostMapping
-    public String createRecipe( @RequestParam String name, 
-                                @RequestParam String description,
+    public String createRecipe( @RequestParam String recipeName, 
+                                @RequestParam String cuisineType,
                                 Model model) {
 
         // add user input to Recipe Data
-        RecipeData.add(new Recipe(name, description));
+        RecipeData.add(new Recipe(recipeName, cuisineType));
         return "redirect:/recipe"; // redirect to "/recipe"
 
+    }
+
+    // Lives at "/recipe/delete"
+    @GetMapping("delete")
+    public String renderDeleteEventForm(Model model) {
+        model.addAttribute("recipes", RecipeData.getAll());
+        return "recipes/delete";
+    }
+
+    // Lives at "/recipe/delete"
+    @PostMapping("delete")
+    public String processDeleteRecipeForm(@RequestParam (required = false) int[] recipeIds) {
+
+        if (recipeIds != null) {
+            for (int id : recipeIds) {
+                RecipeData.remove(id);
+            }
+        }
+
+        return "redirect:/recipe";
     }
 }

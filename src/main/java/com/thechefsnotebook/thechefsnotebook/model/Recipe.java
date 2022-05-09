@@ -5,13 +5,13 @@ public class Recipe {
     private int id;
     private int nextId = 1;
 
-    private String name;
-    private String description;
+    private String recipeName;
+    private String cuisineType;
 
-    public Recipe(String name, String description) {
+    public Recipe(String recipeName, String cuisineType) {
         this.id = nextId;
-        this.name = name;
-        this.description = description;
+        this.recipeName = recipeName;
+        this.cuisineType = cuisineType;
         nextId++;
     }
 
@@ -19,20 +19,22 @@ public class Recipe {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getRecipeName() {
+        return recipeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCuisineType() {
+        return cuisineType;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCuisineType(String cuisineType) {
+        this.cuisineType = cuisineType;
     }
+
+    
 
 }

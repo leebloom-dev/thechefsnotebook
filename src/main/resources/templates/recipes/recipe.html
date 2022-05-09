@@ -10,39 +10,50 @@
 
         <!-- BODY CONTENT -->
 
-            <!-- Basic Form  -->
-            <form method="post" action="/recipe">
-                <div class="form-group">
-                    <label>
-                        Name:
-                        <input type="text" name="name" class="form-control" placeholder="Name" />
-                    </label>
-                    <label>
-                        Description:
-                        <input type="text" name="description" class="form-control" placeholder="Description" />
-                    </label>
-                    <input class="btn btn-primary" type="submit" value="submit" />
-                    <input class="btn btn-warning" type="submit" value="remove" th:if="${recipes.size() > 0}" />
+            <!-- Recipe Form  -->
+            <div class="container" id="recipeFormContainer">
+                <div class="row">
+
+                    <!-- Recipe Form -->
+                    <div class="card" id="recipeForm">   
+                        <form method="post" action="/recipe">
+                            <!-- Input Recipe Name -->
+                            <div class="form-group">
+                                <label for="inputRecipeName">Recipe Name:</label>
+                                <input class="form-control" id="inputRecipeName" type="text" placeholder="Recipe Name" name="recipeName" />
+                            </div>
+                            <!-- Input Cuisine Type -->
+                            <div>
+                                <label for="inputCuisineType">Cuisine Type:</label>
+                                <input class="form-control" id="inputCuisineType" type="text" placeholder="Cuisine Type" name="cuisineType" />
+                            </div>
+                            <!-- Button sends input data to controller @"/recipe" -->
+                            <input class="btn btn-primary" type="submit" value="submit" />
+                        </form>
+                    </div>
+
                 </div>
-            </form>
+            </div>
 
             <!-- Display a Recipes -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Recipe</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="recipe : ${recipes}">
-                        <td th:text="${recipe.id}">ID</td>
-                        <td th:text="${recipe.name}">Recipe</td>
-                        <td th:text="${recipe.description}">Description</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipe</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipe : ${recipes}">
+                            <td th:text="${recipe.id}">ID</td>
+                            <td th:text="${recipe.recipeName}">Recipe Name</td>
+                            <td th:text="${recipe.cuisineType}">Cuisine Type</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
     </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+        <!-- HEADER -->
+
+            <!-- Navigation -->
+            <nav th:replace="fragments :: navigation"></nav>
+
+        <!-- BODY CONTENT -->
+
+            <!-- Delete Recipe Form -->
+            <form method="post" action="/recipe/delete">
+                <th:block th:each="recipe : ${recipes}">
+                    <div class="form-group">
+                        <label>
+                            <span th:text="${recipe.recipeName}"></span>
+                            <input class="form-control" type="checkbox" name="recipeIds" th:value="${recipe.id}" />
+                        </label>
+                    </div>
+                </th:block>
+
+                <input class="btn btn-danger" type="submit" value="Delete Selected Events" />
+            </form>
+
+    </body>
+</html>
