@@ -6,6 +6,7 @@ import com.thechefsnotebook.thechefsnotebook.model.Recipe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,40 +15,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("recipe")
 public class RecipeController {
 
-    // Lives at "/recipe"
+    // responds to GET requests at "/recipe"
     @GetMapping
     public String displayAllRecipes(Model model) {
         model.addAttribute("recipes", RecipeData.getAll());
         return "recipes/recipe";
     }
     
-    // Lives at "/recipe/form"
+    // responds to GET requests at "/recipe/form"
     @GetMapping("form")
     public String renderRecipeForm(Model model) {
         model.addAttribute("Title", "Recipe Form");
         return "recipes/form";
     }
 
-    // Lives at "/recipe/form"
+    // responds to POST requests at "/recipe/form"
     @PostMapping("form")
-    public String createRecipe( @RequestParam String recipeName, 
-                                @RequestParam String cuisineType) {
+    public String processRecipeForm(@ModelAttribute Recipe newRecipe) {
 
-        // add user input to Recipe Data
-        RecipeData.add(new Recipe(recipeName, cuisineType));
+        // Using @ModelAttribute instead of @RequestParam to pass user input into the Recipe object.
+        // Passed input goes through the object's constructor. Field names must match HTML name
+        // attribute.
+        RecipeData.add(newRecipe);
         return "redirect:/recipe"; // redirect to "/recipe"
 
     }
 
-    // Lives at "/recipe/delete"
+    // responds to GET requests at "/recipe/delete"
     @GetMapping("delete")
-    public String renderDeleteEventForm(Model model) {
+    public String renderDeleteRecipeForm(Model model) {
         model.addAttribute("Title", "Delete Recipe");
         model.addAttribute("recipes", RecipeData.getAll());
         return "recipes/delete";
     }
 
-    // Lives at "/recipe/delete"
+    // responds to POST requests at "/recipe/delete"
     @PostMapping("delete")
     public String processDeleteRecipeForm(@RequestParam (required = false) int[] recipeIds) {
 
