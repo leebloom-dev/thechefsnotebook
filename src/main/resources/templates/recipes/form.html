@@ -23,12 +23,14 @@
                             <div class="form-group">
                                 <label for="inputRecipeName">Recipe Name:</label>
                                 <input class="form-control" id="inputRecipeName" type="text" placeholder="Recipe Name" name="recipeName" />
+                                <p th:text="${errorMsg}" style="color: red;"></p>
                             </div>
 
                             <!-- Input Cuisine Type -->
                             <div>
                                 <label for="inputCuisineType">Cuisine Type:</label>
                                 <input class="form-control" id="inputCuisineType" type="text" placeholder="Cuisine Type" name="cuisineType" />
+                                <p th:text="${errorMsg}" style="color: red;"></p>
                             </div>
                             <br>
 
