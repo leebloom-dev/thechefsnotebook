@@ -1,3 +1,8 @@
+/* Images */
+img {
+    width: 100%;
+}
+
 /* Styling Code Block */
 pre code {
     background-color: #eee;
