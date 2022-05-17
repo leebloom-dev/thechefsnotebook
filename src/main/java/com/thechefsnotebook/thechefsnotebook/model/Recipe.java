@@ -26,7 +26,10 @@ public class Recipe {
     public Recipe(String recipeName, String cuisineType) {
         this.recipeName = recipeName;
         this.cuisineType = cuisineType;
- 
+    }
+
+    public Recipe () {
+        
     }
 
     public int getId() {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head">
+    </head>
+    <body>
+
+        <h1>Event Form</h1>
+        <form method="post" action="/events">
+            <label for="events">Enter an event:</label>
+            <input type="text" name="event" placeholder="Event Name" />
+            <input type="submit" value="submit" />
+        </form>
+
+        <hr>
+        
+        <h1>Events Table</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Events</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="event : ${events}">
+                    <td th:text="${event}">Some Event</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>

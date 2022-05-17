@@ -16,6 +16,11 @@ public class RecipeData {
         return recipes.values();
     }
 
+    // returns a specific Recipe by getting the HashMap key.
+    public static Recipe getById(Integer id) {
+        return recipes.get(id);
+    }
+
     // Adding key/value to map where key: id and value: contact informationß
     public static void add(Recipe recipe) {
         recipes.put(recipe.getId(), recipe);

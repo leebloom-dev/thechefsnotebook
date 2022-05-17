@@ -1,4 +1,4 @@
-package com.thechefsnotebook.thechefsnotebook.data;
+package com.thechefsnotebook.thechefsnotebook.repository;
 
 import com.thechefsnotebook.thechefsnotebook.model.Recipe;
 
