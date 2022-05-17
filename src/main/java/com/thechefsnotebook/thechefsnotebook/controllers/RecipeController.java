@@ -34,7 +34,7 @@ public class RecipeController {
 
     // responds to POST requests at "/recipe/form"
     @PostMapping("form")
-    public String processRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
+    public String processRecipeForm(@ModelAttribute @Valid Recipe recipe,
                                     Errors errors,
                                     Model model) {
 
@@ -48,7 +48,7 @@ public class RecipeController {
         // Using @ModelAttribute instead of @RequestParam to pass user input into the Recipe object.
         // Passed input goes through the object's constructor. Field names must match HTML name
         // attribute.
-        RecipeData.add(newRecipe);
+        RecipeData.add(recipe);
         return "redirect:"; // redirect to "/recipe"
 
     }

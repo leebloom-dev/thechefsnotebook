@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+    // responds to GET requests at "/"
     @GetMapping
     public String index(Model model) {
         model.addAttribute("title", "Home");
