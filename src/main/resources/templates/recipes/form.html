@@ -1,52 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html>
     <head th:replace="fragments :: head"></head>
     <body>
 
-        <!-- HEADER -->
+    <!-- HEADER -->
 
-            <!-- Navigation -->
-            <nav th:replace="fragments :: navigation"></nav>
+        <!-- Navigation -->
+        <nav th:replace="fragments :: navigation"></nav>
 
-        <!-- BODY CONTENT -->
+    <!-- BODY CONTENT -->
 
-            <!-- Recipe Form  -->
-            <div class="container" id="recipeFormContainer">
+        <div class="container">
 
-                <h1>Recipe Form</h1>
-
-                <div class="row">
-
-                    <!-- Recipe Form -->
-                    <div class="card" id="recipeForm">   
-                        <form method="post" action="/recipe/form">
-
-                            <!-- Input Recipe Name -->
-                            <div class="form-group">
-                                <label for="inputRecipeName">Recipe Name:</label>
-                                <input class="form-control" id="inputRecipeName" type="text" placeholder="Recipe Name" name="recipeName" />
-                                <p th:text="${errorMsg}" style="color: red;"></p>
-                            </div>
-
-                            <!-- Input Cuisine Type -->
-                            <div>
-                                <label for="inputCuisineType">Cuisine Type:</label>
-                                <input class="form-control" id="inputCuisineType" type="text" placeholder="Cuisine Type" name="cuisineType" />
-                                <p th:text="${errorMsg}" style="color: red;"></p>
-                            </div>
-                            <br>
-
-                            <!-- Button sends input data to controller @"/recipe" -->
-                            <input class="btn btn-primary" type="submit" value="submit" />
-                            
-                        </form>
-                    </div>
-
-                </div>
-                <br>
-
-            </div>
-            <br>
-
+            <!-- Title -->
+            <h1>Recipe Form</h1>
+    
+            <!-- Recipe Form -->
+            <!-- 
+                Form sends user input as a POST to the Recipe Controller 
+                at "/recipes/form"
+             -->
+            <form method="post" action="/recipes/form">
+                <label for="inputRecipeName">Enter a recipe name:</label>
+                <input id="inputRecipeName" type="text" placeholder="recipe name" name="recipeName" />
+                <input class="btn btn-primary" type="submit" value="submit" />
+            </form>
+            
+        </div>
+        
     </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+    <!-- HEADER -->
+
+        <!-- Navigation -->
+        <nav th:replace="fragments :: navigation"></nav>
+
+    <!-- BODY CONTENT -->
+
+        <div class="container">
+            
+            <!-- Title -->
+            <h1>Remove Recipe</h1>
+    
+            <!-- Remove Recipe Form -->
+            <form method="post" action="/recipes/remove">
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipe : ${recipes}">
+                            <td><input type="checkbox" name="recipeId" th:value="${recipe.id}" /></td>
+                            <td th:text="${recipe.recipeName}">Recipe Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <label for="removeRecipe">Submit to remove recipe:</label>
+                <input class="btn btn-warning" id="removeRecipe" type="submit" value="submit" />
+
+            </form>
+                    
+        </div>
+
+    </body>
+</html>
