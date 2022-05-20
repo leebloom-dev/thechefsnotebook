@@ -1,7 +1,7 @@
 package com.thechefsnotebook.thechefsnotebook.controller;
 
-import com.thechefsnotebook.model.RecipesModel;
 import com.thechefsnotebook.thechefsnotebook.data.RecipesData;
+import com.thechefsnotebook.thechefsnotebook.model.RecipesModel;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

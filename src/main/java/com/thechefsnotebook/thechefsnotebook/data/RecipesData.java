@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.thechefsnotebook.model.RecipesModel;
+import com.thechefsnotebook.thechefsnotebook.model.RecipesModel;
 
 public class RecipesData {
 
     // Stores key-value pairs (recipe id, recipe object)
-    private static Map<Integer, RecipesModel> recipes = new HashMap<>();
+    private static final Map<Integer, RecipesModel> recipes = new HashMap<>();
 
     // returns the values in HashMap recipes
     public static Collection<RecipesModel> getAll() {

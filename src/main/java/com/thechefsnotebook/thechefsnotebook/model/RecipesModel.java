@@ -1,11 +1,11 @@
-package com.thechefsnotebook.model;
+package com.thechefsnotebook.thechefsnotebook.model;
 
 public class RecipesModel {
 
     /* FIELD */
     
     private int id;
-    private int nextId = 1;
+    private static int nextId = 1;
     private String recipeName;
 
     
