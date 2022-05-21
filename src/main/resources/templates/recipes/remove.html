@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="recipe : ${recipes}">
-                            <td><input type="checkbox" name="recipeId" th:value="${recipe.id}" /></td>
+                            <td><input type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
                             <td th:text="${recipe.recipeName}">Recipe Name</td>
                         </tr>
                     </tbody>
