@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-    <head th:replace="fragments :: head"></head>
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text="${title}">Default Title</title>
+    </head>
     <body>
-
+        
         <!-- Navigation -->
         <nav>
             <ul>
@@ -10,8 +13,7 @@
             </ul>
         </nav>
 
-        <!-- Heading -->
-        <h1>Default Heading</h1>
+        <h1 th:text="${title}">Default Heading</h1>
 
     </body>
 </html>
