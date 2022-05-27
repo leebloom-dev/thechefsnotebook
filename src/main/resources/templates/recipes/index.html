@@ -18,12 +18,14 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Recipe Names</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="recipe : ${recipes}">
-                        <td th:text="${recipe.name}">some recipe name</td>
+                        <td th:text="${recipe.id}">recipe id</td>
+                        <td th:text="${recipe.name}">recipe name</td>
                     </tr>
                 </tbody>
             </table>
