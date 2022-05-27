@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+        <div class="container">
+
+        <!-- HEADER -->
+
+            <h1 th:text="${title}">Default Header</h1>
+
+            <!-- Navigation -->
+            <nav th:replace="fragments :: navigation"></nav>
+
+        <!-- BODY CONTENT -->
+
+            <!-- Recipe Form -->
+            <form method="post" action="/recipes/create">
+                <div class="mb-3"> <!-- margin bottom - size -->
+                    <lable class="form-label" for="recipeName"></lable>
+                    <input class="form-control" type="text" id="recipeName" placeholder="Recipe Name" name="name" />
+                </div>
+
+                <!-- User Submit Button -->
+                <input class="btn btn-primary" type="submit" value="submit" />
+            </form>
+
+        </div>
+
+    </body>
+</html>
