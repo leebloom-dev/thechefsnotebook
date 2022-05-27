@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="recipe : ${recipes}">
-                        <td th:text="${recipe}">some recipe name</td>
+                        <td th:text="${recipe.name}">some recipe name</td>
                     </tr>
                 </tbody>
             </table>
