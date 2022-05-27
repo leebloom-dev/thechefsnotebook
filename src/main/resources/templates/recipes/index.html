@@ -5,10 +5,28 @@
         
         <div class="container">
             
+        <!-- HEADER -->
+
             <h1 th:text="${title}">Default Heading</h1>
     
             <!-- Navigation -->
             <nav th:replace="fragments :: navigation"></nav>
+
+        <!-- BODY CONTENT -->
+
+            <!-- Table of Recipes -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Recipe Names</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipe : ${recipes}">
+                        <td th:text="${recipe}">some recipe name</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 
