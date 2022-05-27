@@ -3,6 +3,8 @@ package com.thechefsnotebook.thechefsnotebook.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thechefsnotebook.models.RecipeModel;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("recipes") // URL "localhost:8080/recipes"
 public class RecipeController {
 
-    private List<String> recipes = new ArrayList<>();
+    private List<RecipeModel> recipes = new ArrayList<>();
     
     // responds to GET requests at URL "/recipes"
     @GetMapping
@@ -39,7 +41,7 @@ public class RecipeController {
     public String processRecipeForm(@RequestParam String name) {
         
         // add recipe name to the array list
-        recipes.add(name);
+        recipes.add(new RecipeModel(name));
         
         // redirect to URL "/recipes"
         return "redirect:";
