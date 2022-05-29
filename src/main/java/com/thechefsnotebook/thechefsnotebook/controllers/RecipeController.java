@@ -6,6 +6,7 @@ import com.thechefsnotebook.models.RecipeModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,10 +35,10 @@ public class RecipeController {
 
     // responds to POST requests at URL "/recipes/form"
     @PostMapping("create")
-    public String processRecipeForm(@RequestParam String name) {
+    public String processRecipeForm(@ModelAttribute RecipeModel recipeName) {
         
         // add recipe name to the array list
-        RecipeData.add(new RecipeModel(name));
+        RecipeData.add(recipeName);
         
         // redirect to URL "/recipes"
         return "redirect:";

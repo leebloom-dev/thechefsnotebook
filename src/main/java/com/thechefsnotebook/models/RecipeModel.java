@@ -7,13 +7,13 @@ public class RecipeModel {
     private String name;
 
     public RecipeModel(String name) {
-        this.id = nextId;
+        this();
         this.name = name;
-        nextId++;
     }
 
     public RecipeModel() {
-
+        this.id = nextId;
+        nextId++;
     }
 
     public int getId() {
