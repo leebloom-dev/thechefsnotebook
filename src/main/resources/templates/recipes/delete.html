@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+        <div class="container">
+
+        <!-- HEADER -->
+
+            <h1 th:text="${title}">Default Title</h1>
+
+            <!-- Navigation -->
+            <nav th:replace="fragments :: navigation"></nav>
+            <br>
+
+        <!-- BODY CONTENT -->
+
+            <!-- Delete Form -->
+            <form method="post" action="/recipes/delete">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipe Names</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipe : ${recipes}">
+                            <td><input type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
+                            <td th:text="${recipe.name}">recipe name</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Submit Button -->
+                <input class="btn btn-danger" type="submit" value="delete" />
+
+            </form>
+
+        </div>
+
+    </body>
+</html>
