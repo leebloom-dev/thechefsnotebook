@@ -19,5 +19,10 @@ public class RecipeData {
     public static void add(RecipeModel newRecipe) {
         recipes.put(newRecipe.getId(), newRecipe);
     }
+
+    // remove recipe
+    public static void delete(int id) {
+        recipes.remove(id);
+    }
     
 }

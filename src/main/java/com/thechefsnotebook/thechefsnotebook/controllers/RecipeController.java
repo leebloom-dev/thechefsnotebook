@@ -44,4 +44,26 @@ public class RecipeController {
 
     }
 
+    // responds to GET requests at URL "/recipes/delete"
+    @GetMapping("delete")
+    public String displayDeleteForm(Model model) {
+        model.addAttribute("title", "Delete Recipe Form");
+        model.addAttribute("recipes", RecipeData.getAll());
+        return "recipes/delete";
+    }
+
+    // responds to POST requests at URL "/recipes/delete"
+    @PostMapping("delete")
+    public String processDeleteForm(@RequestParam (required = false) int[] recipeIds) {
+        // if int array is not empty
+        if (recipeIds != null) {
+            for (int id : recipeIds) {
+                RecipeData.delete(id);
+            }
+        }
+
+        // redirect to URL "/recipes"
+        return "redirect:";
+    }
+
 }
