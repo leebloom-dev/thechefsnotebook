@@ -19,7 +19,9 @@
             <form method="post" action="/recipes/create">
                 <div class="mb-3"> <!-- margin bottom - size -->
                     <lable class="form-label" for="recipeName"></lable>
-                    <input class="form-control" type="text" id="recipeName" placeholder="Recipe Name" name="name" />
+                    <!-- <input class="form-control" type="text" id="recipeName" placeholder="Recipe Name" name="name" /> -->
+                    <input class="form-control" type="text" id="recipeName" placeholder="Recipe Name" th:field="${recipe.name}" />
+                    <p th:text="${errorMsg}" style="color: red">Error Message</p>
                 </div>
 
                 <!-- User Submit Button -->
