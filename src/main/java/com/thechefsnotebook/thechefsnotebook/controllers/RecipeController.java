@@ -1,10 +1,13 @@
 package com.thechefsnotebook.thechefsnotebook.controllers;
 
+import javax.validation.Valid;
+
 import com.thechefsnotebook.data.RecipeData;
 import com.thechefsnotebook.models.RecipeModel;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,16 +29,24 @@ public class RecipeController {
         return "recipes/index";
     }
 
-    // responds to GET requests at URL "/recipes/form"
+    // responds to GET requests at URL "/recipes/create"
     @GetMapping("create")
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
+        model.addAttribute("recipe", new RecipeModel());
         return "recipes/form";
     }
 
-    // responds to POST requests at URL "/recipes/form"
+    // responds to POST requests at URL "/recipes/create"
     @PostMapping("create")
-    public String processRecipeForm(@ModelAttribute RecipeModel recipeName) {
+    public String processRecipeForm(@ModelAttribute @Valid RecipeModel recipeName, Errors errors, Model model) {
+
+        // error validation if true
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Recipe Form Page");
+            model.addAttribute("errorMsg", "bad data!");
+            return "recipes/form";
+        }
         
         // add recipe name to the array list
         RecipeData.add(recipeName);
