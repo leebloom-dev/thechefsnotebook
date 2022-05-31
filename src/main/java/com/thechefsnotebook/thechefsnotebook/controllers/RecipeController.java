@@ -33,7 +33,6 @@ public class RecipeController {
     @GetMapping("create")
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
-        model.addAttribute("recipe", new RecipeModel());
         return "recipes/form";
     }
 
