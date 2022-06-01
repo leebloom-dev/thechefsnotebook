@@ -1,4 +1,4 @@
-package com.thechefsnotebook.thechefsnotebook.controllers;
+package com.thechefsnotebook.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

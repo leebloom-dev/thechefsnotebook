@@ -18,11 +18,11 @@
             <!-- Recipe Form -->
             <form method="post" action="/recipes/create">
                 <div class="mb-3"> <!-- margin bottom - size -->
-                    <label class="form-label" for="recipeName">Enter recipe name (3 to 50 characters):</label>
+                    <label class="form-label" for="recipe">Enter recipe name (3 to 50 characters):</label>
                     <!-- Thymeleaf calls constructor to pass in data -->
-                    <input class="form-control" type="text" id="recipeName" placeholder="Recipe Name" name="name" />
+                    <input class="form-control" type="text" id="recipe" placeholder="Recipe Name" th:field="${recipe.name}" />
                     <!-- Thymeleaf inserts error message related to field -->
-                    <p class="error" th:text="${errorMsg}">Error Message</p>
+                    <p class="error" th:errors="${recipe.name}"></p>
                 </div>
 
                 <!-- User Submit Button -->
