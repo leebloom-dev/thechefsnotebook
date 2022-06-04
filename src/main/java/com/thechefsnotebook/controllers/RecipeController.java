@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.RecipeData;
-import com.thechefsnotebook.models.RecipeModel;
+import com.thechefsnotebook.models.Recipe;
 
 @Controller
 @RequestMapping("recipes") // URL "localhost:8080/recipes"
@@ -33,22 +33,24 @@ public class RecipeController {
     @GetMapping("create")
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
-        model.addAttribute("recipe", new RecipeModel());
+        model.addAttribute("recipe", new Recipe()); // same names: variable & class
         return "recipes/form";
     }
 
     // responds to POST requests at URL "/recipes/create"
     @PostMapping("create")
-    public String processRecipeForm(@ModelAttribute @Valid RecipeModel recipe, Model model, Errors errors) {
+    public String processRecipeForm(@ModelAttribute @Valid Recipe newRecipe, 
+                                    Errors errors, Model model) {
 
         // error validation if true
+        // Model name can NOT have camel case!!!
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
             return "recipes/form";
         }
         
         // add recipe name to the array list
-        RecipeData.add(recipe);
+        RecipeData.add(newRecipe);
         
         // redirect to URL "/recipes"
         return "redirect:";
@@ -66,6 +68,7 @@ public class RecipeController {
     // responds to POST requests at URL "/recipes/delete"
     @PostMapping("delete")
     public String processDeleteForm(@RequestParam (required = false) int[] recipeIds) {
+
         // if int array is not empty
         if (recipeIds != null) {
             for (int id : recipeIds) {
@@ -75,6 +78,7 @@ public class RecipeController {
 
         // redirect to URL "/recipes"
         return "redirect:";
+
     }
 
 }

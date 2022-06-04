@@ -3,7 +3,7 @@ package com.thechefsnotebook.models;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class RecipeModel {
+public class Recipe {
 
     private int id;
     private static int nextId = 1;
@@ -13,12 +13,12 @@ public class RecipeModel {
     @Size(min = 3, max = 50, message = "Must be within 3 to 50 characters!")
     private String name;
 
-    public RecipeModel(String name) {
+    public Recipe(String name) {
         this();
         this.name = name;
     }
 
-    public RecipeModel() {
+    public Recipe() {
         this.id = nextId;
         nextId++;
     }
@@ -35,4 +35,21 @@ public class RecipeModel {
         this.name = name;
     }
     
+    // @Override
+    // public String toString() {
+    //     return name;
+    // }
+
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (this == o) return true;
+    //     if (o == null || getClass() != o.getClass()) return false;
+    //     Event event = (Event) o;
+    //     return id == event.id;
+    // }
+
+    // @Override
+    // public int hashCode() {
+    //     return Objects.hash(id);
+    // }
 }
