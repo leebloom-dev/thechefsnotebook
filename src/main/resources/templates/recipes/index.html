@@ -20,13 +20,15 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Recipe Names</th>
+                        <th>Recipe</th>
+                        <th>Cuisine</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="recipe : ${recipes}">
                         <td th:text="${recipe.id}">recipe id</td>
                         <td th:text="${recipe.name}">recipe name</td>
+                        <td th:text="${recipe.cuisine}">cuisine</td>
                     </tr>
                 </tbody>
             </table>

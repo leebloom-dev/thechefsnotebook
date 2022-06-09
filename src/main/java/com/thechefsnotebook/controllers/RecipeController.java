@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.thechefsnotebook.data.CuisineData;
 import com.thechefsnotebook.data.RecipeData;
 import com.thechefsnotebook.models.Recipe;
 
@@ -23,7 +24,7 @@ public class RecipeController {
     public String displayRecipeHomePage(Model model) {
         model.addAttribute("title", "Recipe Home Page");
 
-        // add list to the model
+        // add list of recipes to the model
         model.addAttribute("recipes", RecipeData.getAll());
 
         return "recipes/index";
@@ -34,6 +35,10 @@ public class RecipeController {
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
+
+        // add list of cuisines to the model
+        model.addAttribute("cuisines", CuisineData.getAll());
+
         return "recipes/form";
     }
 
@@ -46,6 +51,7 @@ public class RecipeController {
         // Model name can NOT have camel case!!!
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
+            model.addAttribute("cuisines", CuisineData.getAll());
             return "recipes/form";
         }
         

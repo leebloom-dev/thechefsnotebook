@@ -1,7 +1,10 @@
 package com.thechefsnotebook.models;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.thechefsnotebook.enums.CuisineEnum;
 
 public class Recipe {
 
@@ -10,12 +13,17 @@ public class Recipe {
 
     @NotBlank(message = "Must give a recipe name!")
     // Size in characters
+    
     @Size(min = 3, max = 50, message = "Must be within 3 to 50 characters!")
     private String name;
 
-    public Recipe(String name) {
+    @NotNull(message = "Must select a cuisine!")
+    private CuisineEnum cuisine;
+
+    public Recipe(String name, CuisineEnum cuisine) {
         this();
         this.name = name;
+        this.cuisine = cuisine;
     }
 
     public Recipe() {
@@ -33,6 +41,14 @@ public class Recipe {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CuisineEnum getCuisine() {
+        return cuisine;
+    }
+
+    public void setCuisine(CuisineEnum cuisine) {
+        this.cuisine = cuisine;
     }
     
     // @Override

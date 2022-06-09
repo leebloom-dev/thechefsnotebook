@@ -31,10 +31,11 @@
                     <label class="form-label" for="cuisine">Select a cuisine:</label>
                     <select class="form-select" id="cuisine" aria-label="Default select example">
                         <option selected>---</option>
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
+                        <th:block th:each="cuisine : ${cuisines}">
+                            <option th:field="${recipe.cuisine}" th:text="${cuisine}" th:value="${cuisine}">default option</option>
+                        </th:block>
                     </select>
+                    <p class="error" th:errors="${recipe.cuisine}"></p>
                 </div>
 
                 <!-- User Submit Button -->

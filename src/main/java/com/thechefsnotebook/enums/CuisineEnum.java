@@ -1,6 +1,6 @@
 package com.thechefsnotebook.enums;
 
-public enum Cuisine {
+public enum CuisineEnum {
     JAPANESE,
     AMERICAN,
     KOREAN
