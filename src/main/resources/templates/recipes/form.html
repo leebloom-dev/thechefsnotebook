@@ -29,10 +29,10 @@
                 <!-- User Selects a Cuisine -->
                 <div class="mb-3">
                     <label class="form-label" for="cuisine">Select a cuisine:</label>
-                    <select class="form-select" id="cuisine" aria-label="Default select example">
-                        <option selected>---</option>
+                    <select class="form-select" id="cuisine" aria-label="Default select example" th:field="${recipe.cuisine}">
+                        <option selected value=" ">---</option>
                         <th:block th:each="cuisine : ${cuisines}">
-                            <option th:field="${recipe.cuisine}" th:text="${cuisine}" th:value="${cuisine}">default option</option>
+                            <option th:text="${cuisine}" th:value="${cuisine}">default option</option>
                         </th:block>
                     </select>
                     <p class="error" th:errors="${recipe.cuisine}"></p>
