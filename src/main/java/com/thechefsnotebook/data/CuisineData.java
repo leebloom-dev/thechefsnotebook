@@ -1,36 +1,33 @@
 package com.thechefsnotebook.data;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import com.thechefsnotebook.enums.CuisineEnum;
 
 public class CuisineData {
 
-    private static final List<CuisineEnum> cuisines = new ArrayList<>();
-    private static boolean valid = true; 
+    private static final List<String> cuisines = new ArrayList<>();
+    private static boolean singleUse = true;
 
-    // get all cuisines
-    public static Collection<CuisineEnum> getAll() {
-        if (valid == true) {
-            add();
-            valid = false;
-        }
-
-        return cuisines;
-    }
-
-    // add all cuisines
+    // add cuisine enum to list
     public static void add() {
         for (CuisineEnum cuisine : CuisineEnum.values()) {
-            cuisines.add(cuisine);
+            cuisines.add(cuisine.getCuisine());
         }
     }
 
-    // delete all cuisines
-    public static void delete() {
-        cuisines.clear();
+    // get cuisines from list
+    public static List<String> getAll() {
+        // add cuisine enums to list only once
+        if (singleUse == true) {
+            add();
+            singleUse = false;
+        }
+
+        Collections.sort(cuisines);
+        return cuisines;
     }
     
 }

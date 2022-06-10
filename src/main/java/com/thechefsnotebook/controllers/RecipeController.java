@@ -36,7 +36,7 @@ public class RecipeController {
         model.addAttribute("title", "Recipe Form Page");
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
 
-        // add list of cuisines to the model
+        // add sorted ascending list(String) of cuisines to the model
         model.addAttribute("cuisines", CuisineData.getAll());
 
         return "recipes/form";
