@@ -4,8 +4,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.thechefsnotebook.enums.CuisineEnum;
-
 public class Recipe {
 
     private int id;
@@ -18,9 +16,9 @@ public class Recipe {
     private String name;
 
     @NotNull(message = "Must select a cuisine!")
-    private CuisineEnum cuisine;
+    private String cuisine;
 
-    public Recipe(String name, CuisineEnum cuisine) {
+    public Recipe(String name, String cuisine) {
         this();
         this.name = name;
         this.cuisine = cuisine;
@@ -43,11 +41,11 @@ public class Recipe {
         this.name = name;
     }
 
-    public CuisineEnum getCuisine() {
+    public String getCuisine() {
         return cuisine;
     }
 
-    public void setCuisine(CuisineEnum cuisine) {
+    public void setCuisine(String cuisine) {
         this.cuisine = cuisine;
     }
     
