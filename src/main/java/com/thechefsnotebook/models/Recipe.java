@@ -1,7 +1,6 @@
 package com.thechefsnotebook.models;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Recipe {
@@ -15,7 +14,7 @@ public class Recipe {
     @Size(min = 3, max = 50, message = "Must be within 3 to 50 characters!")
     private String name;
 
-    @NotNull(message = "Must select a cuisine!")
+    @NotBlank(message = "Must select a cuisine!")
     private String cuisine;
 
     public Recipe(String name, String cuisine) {
