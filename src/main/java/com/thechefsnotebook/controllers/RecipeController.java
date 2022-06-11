@@ -2,6 +2,7 @@ package com.thechefsnotebook.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.CuisineData;
-import com.thechefsnotebook.data.RecipeData;
+import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Recipe;
 
 @Controller
 @RequestMapping("recipes") // URL "localhost:8080/recipes"
 public class RecipeController {
+
+    @Autowired
+    private RecipeRepository recipeRepository;
 
     // responds to GET requests at URL "/recipes"
     @GetMapping
@@ -25,7 +29,7 @@ public class RecipeController {
         model.addAttribute("title", "Recipe Home Page");
 
         // add list of recipes to the model
-        model.addAttribute("recipes", RecipeData.getAll());
+        model.addAttribute("recipes", recipeRepository.findAll());
 
         return "recipes/index";
     }
@@ -56,7 +60,7 @@ public class RecipeController {
         }
         
         // add recipe name to the array list
-        RecipeData.add(newRecipe);
+        recipeRepository.save(newRecipe);
         
         // redirect to URL "/recipes"
         return "redirect:";
@@ -67,7 +71,7 @@ public class RecipeController {
     @GetMapping("delete")
     public String displayDeleteForm(Model model) {
         model.addAttribute("title", "Delete Recipe Form");
-        model.addAttribute("recipes", RecipeData.getAll());
+        model.addAttribute("recipes", recipeRepository.findAll());
         return "recipes/delete";
     }
 
@@ -78,7 +82,7 @@ public class RecipeController {
         // if int array is not empty
         if (recipeIds != null) {
             for (int id : recipeIds) {
-                RecipeData.delete(id);
+                recipeRepository.deleteById(id);
             }
         }
 
