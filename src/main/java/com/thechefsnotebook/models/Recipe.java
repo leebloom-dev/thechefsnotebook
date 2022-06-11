@@ -1,12 +1,17 @@
 package com.thechefsnotebook.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Recipe {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
 
     @NotBlank(message = "Must give a recipe name!")
     // Size in characters
@@ -18,14 +23,11 @@ public class Recipe {
     private String cuisine;
 
     public Recipe(String name, String cuisine) {
-        this();
         this.name = name;
         this.cuisine = cuisine;
     }
 
     public Recipe() {
-        this.id = nextId;
-        nextId++;
     }
 
     public int getId() {
@@ -57,8 +59,8 @@ public class Recipe {
     // public boolean equals(Object o) {
     //     if (this == o) return true;
     //     if (o == null || getClass() != o.getClass()) return false;
-    //     Event event = (Event) o;
-    //     return id == event.id;
+    //     Recipe recipe = (Recipe) o;
+    //     return id == recipe.id;
     // }
 
     // @Override
