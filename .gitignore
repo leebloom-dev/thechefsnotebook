@@ -38,3 +38,6 @@ out/
 
 ### .env files ###
 .env
+
+### application properties ###
+application.properties
