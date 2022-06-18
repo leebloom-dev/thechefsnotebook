@@ -91,4 +91,11 @@ public class RecipeController {
 
     }
 
+    // responds to GET requests at URL "/recipes/search"
+    @GetMapping("search")
+    public String displaySearchForm(Model model) {
+        model.addAttribute("title", "Search Recipes");
+        return "recipes/search";
+    }
+
 }
