@@ -19,9 +19,11 @@
             <form method="post" action="/recipes/search">
                 <div class="mb-3">
                     <label class="form-label" for="searchRecipe">Enter recipe to search:</label>
-                    <input class="form-control" id="searchRecipe" type="text" placeholder="Enter recipe" />
+                    <input class="form-control" id="searchRecipe" type="text" placeholder="Enter recipe" th:field="${recipe.name}" />
+                    <p class="error" th:errors="${recipe.name}"></p>
                 </div>
                 <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-secondary" id="btnClear" onclick="display()">Clear</button>
             </form>
             <br>
 
@@ -40,5 +42,6 @@
             </table>
 
         </div>
+
     </body>
 </html>

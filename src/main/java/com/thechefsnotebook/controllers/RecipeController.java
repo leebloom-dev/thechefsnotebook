@@ -95,6 +95,19 @@ public class RecipeController {
     @GetMapping("search")
     public String displaySearchForm(Model model) {
         model.addAttribute("title", "Search Recipes");
+        model.addAttribute("recipe", new Recipe());
+        return "recipes/search";
+    }
+
+    // responds to POST requests at URL "/recipes/search"
+    @PostMapping("search")
+    public String processSearchForm(@ModelAttribute @Valid Recipe recipe,
+                                    Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Search Recipes");
+            return "recipes/search";
+        }
+
         return "recipes/search";
     }
 
