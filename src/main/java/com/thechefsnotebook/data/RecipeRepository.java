@@ -7,5 +7,5 @@ import com.thechefsnotebook.models.Recipe;
 
 @Repository
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
-    
+
 }
