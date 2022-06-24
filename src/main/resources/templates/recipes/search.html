@@ -30,18 +30,24 @@
             <!-- Display Searched -->
             <table class="table table-striped">
                 <thead>
-                    <th>#</th>
-                    <th>Recipe</th>
-                    <th>Cuisine</th>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Cuisine</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <td>#</td>
-                    <td>Recipe</td>
-                    <td>Cuisine</td>
+                    <tr th:each="recipe : ${recipeList}">
+                        <td th:text="${recipe.id}">#</td>
+                        <td th:text="${recipe.name}">Recipe</td>
+                        <td th:text="${recipe.cuisine}">Cuisine</td>
+                    </tr>
                 </tbody>
             </table>
 
         </div>
 
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
     </body>
 </html>
