@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
     <head th:replace="fragments :: head"></head>
-    <body>
+    <body class="container">
         
-        <div class="container">
-            
         <!-- HEADER -->
 
-            <h1 th:text="${title}">Default Heading</h1>
-    
-            <!-- Navigation -->
-            <nav th:replace="fragments :: navigation"></nav>
-            <br>
+        <header th:replace="fragments :: header"></header>
+        <br>
 
         <!-- BODY CONTENT -->
 
-            <!-- Search Form -->
-            <form method="post" action="/recipes/search">
-                <div class="mb-3">
-                    <label class="form-label" for="searchRecipe">Enter recipe to search:</label>
-                    <input class="form-control" id="searchRecipe" type="text" placeholder="Enter recipe" th:field="${recipe.name}" />
-                    <p class="error" th:errors="${recipe.name}"></p>
-                </div>
-                <button class="btn btn-primary" type="submit">Search</button>
-                <button class="btn btn-secondary" id="btnClear">Clear</button>
-            </form>
-            <br>
+        <!-- Search Form -->
+        <form method="post" action="/recipes/search">
+            <div class="mb-3">
+                <label class="form-label" for="searchRecipe">Enter recipe to search:</label>
+                <input class="form-control" id="searchRecipe" type="text" placeholder="Enter recipe" th:field="${recipe.name}" />
+                <p class="error" th:errors="${recipe.name}"></p>
+            </div>
+            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-secondary" id="btnClear">Clear</button>
+        </form>
+        <br>
 
-            <!-- Display Searched -->
-            <table class="table table-striped">
-                <thead>
-                    <th>#</th>
-                    <th>Recipe</th>
-                    <th>Cuisine</th>
-                </thead>
-                <tbody>
-                    <td>#</td>
-                    <td>Recipe</td>
-                    <td>Cuisine</td>
-                </tbody>
-            </table>
-
-        </div>
+        <!-- Display Searched -->
+        <table class="table table-striped">
+            <thead>
+                <th>#</th>
+                <th>Recipe</th>
+                <th>Cuisine</th>
+            </thead>
+            <tbody>
+                <td>#</td>
+                <td>Recipe</td>
+                <td>Cuisine</td>
+            </tbody>
+        </table>
 
     </body>
 </html>

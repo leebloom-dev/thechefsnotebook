@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
     <head th:replace="fragments :: head"></head>
     <body class="container">
-        
+
         <!-- HEADER -->
 
         <header th:replace="fragments :: header"></header>
@@ -10,20 +10,17 @@
 
         <!-- BODY CONTENT -->
 
-        <!-- Table of Recipes -->
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Recipe</th>
-                    <th>Cuisine</th>
+                    <th>Recipe Category</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="recipe : ${recipes}">
-                    <td th:text="${recipe.id}">recipe id</td>
-                    <td th:text="${recipe.name}">recipe name</td>
-                    <td th:text="${recipe.cuisine}">cuisine</td>
+                <tr>
+                    <td>#</td>
+                    <td>Recipe Category</td>
                 </tr>
             </tbody>
         </table>

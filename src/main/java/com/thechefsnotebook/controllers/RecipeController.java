@@ -43,7 +43,7 @@ public class RecipeController {
         // add sorted ascending list(String) of cuisines to the model
         model.addAttribute("cuisines", CuisineData.getAll());
 
-        return "recipes/form";
+        return "recipes/create";
     }
 
     // responds to POST requests at URL "/recipes/create"
@@ -56,7 +56,7 @@ public class RecipeController {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
             model.addAttribute("cuisines", CuisineData.getAll());
-            return "recipes/form";
+            return "recipes/create";
         }
         
         // add recipe name to the array list

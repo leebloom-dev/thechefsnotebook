@@ -1,10 +1,10 @@
-const recipeForm = document.getElementById("clearInput");
+const recipeForm = document.getElementById("btnClear");
 
 recipeForm.addEventListener("click", function(event) {
-    alert("You cleared the recipe input field!");
     event.preventDefault();
+    clearInputField();
 });
 
-function clearRecipeField() {
-    document.getElementById("recipe").value = '';
+function clearInputField() {
+    document.getElementById("inputField").value = '';
 }

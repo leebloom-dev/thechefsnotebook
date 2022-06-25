@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
     <head th:replace="fragments :: head"></head>
-    <body>
+    <body class="container">
         
-        <div class="container">
-
         <!-- HEADER -->
-
-            <h1 th:text="${title}">Default Heading</h1>
-    
-            <!-- Navigation -->
-            <nav th:replace="fragments :: navigation"></nav>
-
-        </div>
+        <header th:replace="fragments :: header"></header>
 
     </body>
 </html>
