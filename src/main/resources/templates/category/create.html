@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+
+        <!-- HEADER -->
+
+        <header th:replace="fragments :: header"></header>
+        <br>
+    
+        <!-- BODY CONTENT -->
+
+        <!-- Form to create recipe category -->
+        <form method="post" action="recipes/category/create">
+            <div class="mb-3">
+                <label for="inputField">Enter a category for a recipe:</label>
+                <input class="form-control" id="inputField" placeholder="Recipe Category" th:field="${recipeCategory.name}" />
+                <p class="error" th:errors="${recipeCategory.name}"></p>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-secondary" id="btnClear">Clear</button>
+        </form>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
+
+    </body>
+</html>
