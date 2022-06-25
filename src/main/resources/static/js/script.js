@@ -7,4 +7,5 @@ recipeForm.addEventListener("click", function(event) {
 
 function clearInputField() {
     document.getElementById("inputField").value = '';
+
 }
