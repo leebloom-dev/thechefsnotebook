@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.RecipeCategoryRepository;
 import com.thechefsnotebook.models.RecipeCategory;
@@ -25,7 +26,7 @@ public class RecipeCategoryController {
     @GetMapping
     public String displayCategories(Model model) {
         model.addAttribute("title", "Recipe Category");
-        model.addAttribute("categories", recipeCategoryRepository.findAll());
+        model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
         return "category/index";
     }
     
@@ -48,6 +49,29 @@ public class RecipeCategoryController {
         }
 
         recipeCategoryRepository.save(newRecipeCategory);
+        return "redirect:";
+    }
+
+    // Responds to GET requests at "/recipes/category/delete"
+    @GetMapping("delete")
+    public String displayDeleteCategoryForm(Model model) {
+        model.addAttribute("title", "Delete Recipe Category");
+        model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        return "category/delete";
+    }
+
+
+    // Responds to POST requests at "/recipes/category/delete"
+    @PostMapping("delete")
+    public String processDeleteCategoryForm(@RequestParam(required = false) int[] recipeCategoryIds) {
+
+        // If the selection is NOT empty
+        if (recipeCategoryIds != null) {
+            for (int recipeCategoryId : recipeCategoryIds) {
+                recipeCategoryRepository.deleteById(recipeCategoryId);
+            }
+        }
+
         return "redirect:";
     }
 

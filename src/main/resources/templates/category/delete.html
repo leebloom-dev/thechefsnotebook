@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+
+        <!-- HEADER -->
+
+        <header th:replace="fragments :: header"></header>
+        <br>
+
+        <!-- BODY CONTENT -->
+        <form method="post" action="/recipes/category/delete">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Recipe Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipeCategory : ${recipeCategories}">
+                        <td><input id="inputCheckbox" type="checkbox" name="recipeCategoryIds" th:value="${recipeCategory.id}" /></td>
+                        <td th:text="${recipeCategory.name}">Recipe Category</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-secondary" id="btnClearCheckbox">Clear</button>
+            <button class="btn btn-warning" id="btnSelectCheckbox">Select All</button>
+        </form>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
+    </body>
+</html>

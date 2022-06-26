@@ -18,9 +18,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#</td>
-                    <td>Recipe Category</td>
+                <tr th:each="recipeCategory : ${recipeCategories}">
+                    <td th:text="${recipeCategory.id}">#</td>
+                    <td th:text="${recipeCategory.name}">Recipe Category</td>
                 </tr>
             </tbody>
         </table>
