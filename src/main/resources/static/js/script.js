@@ -1,24 +1,7 @@
 // FIELDS
-const btnClear = document.getElementById("btnClear");
+const btnClearTextField = document.getElementById("btnClearTextField");
 const btnClearCheckbox = document.getElementById("btnClearCheckbox")
 const btnSelectCheckbox = document.getElementById("btnSelectCheckbox");
-
-
-// EVENT LISTENERS ON CLICK
-btnClear.addEventListener("click", function(event) {
-    event.preventDefault();
-    clearInputField();
-});
-
-btnClearCheckbox.addEventListener("click", function(event) {
-    event.preventDefault();
-    clearInputCheckbox();
-});
-
-btnSelectCheckbox.addEventListener("click", function(event) {
-    event.preventDefault();
-    selectInputCheckbox();
-});
 
 
 // FUNCTIONS
@@ -33,3 +16,10 @@ function clearInputCheckbox() {
 function selectInputCheckbox() {
     document.getElementById("inputCheckbox").checked = true;
 }
+
+
+// EVENT LISTENERS ON CLICK
+btnClearTextField.addEventListener("click", function(event) {
+    event.preventDefault();
+    clearInputField();
+});
