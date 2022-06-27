@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.CuisineData;
+import com.thechefsnotebook.data.RecipeCategoryRepository;
 import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Recipe;
+import com.thechefsnotebook.models.RecipeCategory;
 
 @Controller
 @RequestMapping("recipes") // URL "localhost:8080/recipes"
@@ -25,6 +27,9 @@ public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private RecipeCategoryRepository recipeCategoryRepository;
 
     // responds to GET requests at URL "/recipes"
     @GetMapping
@@ -34,31 +39,37 @@ public class RecipeController {
         // add list of recipes to the model
         model.addAttribute("recipes", recipeRepository.findAll());
 
+        // add list of categories to the model
+        model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        
         return "recipes/index";
     }
-
+    
     // responds to GET requests at URL "/recipes/create"
     @GetMapping("create")
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
-
+        model.addAttribute("recipeCategory", new RecipeCategory());
+        model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        
         // add sorted ascending list(String) of cuisines to the model
         model.addAttribute("cuisines", CuisineData.getAll());
-
+        
         return "recipes/create";
     }
-
+    
     // responds to POST requests at URL "/recipes/create"
     @PostMapping("create")
     public String processRecipeForm(@ModelAttribute @Valid Recipe newRecipe, 
-                                    Errors errors, Model model) {
-
+    Errors errors, Model model) {
+        
         // error validation if true
         // Model name can NOT have camel case!!!
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
             model.addAttribute("cuisines", CuisineData.getAll());
+            model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
             return "recipes/create";
         }
         

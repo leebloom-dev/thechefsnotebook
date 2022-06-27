@@ -1,7 +1,9 @@
 package com.thechefsnotebook.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -14,9 +16,14 @@ public class Recipe extends AbstractEntity {
     @NotBlank(message = "Must select a cuisine!")
     private String cuisine;
 
-    public Recipe(String name, String cuisine) {
+    @ManyToOne
+    @NotNull(message = "A recipe category is required! Please create a category...")
+    private RecipeCategory recipeCategory;
+
+    public Recipe(String name, String cuisine, RecipeCategory recipeCategory) {
         this.name = name;
         this.cuisine = cuisine;
+        this.recipeCategory = recipeCategory;
     }
 
     public Recipe() {
@@ -36,6 +43,14 @@ public class Recipe extends AbstractEntity {
 
     public void setCuisine(String cuisine) {
         this.cuisine = cuisine;
+    }
+
+    public RecipeCategory getRecipeCategory() {
+        return recipeCategory;
+    }
+
+    public void setRecipeCategory(RecipeCategory recipeCategory) {
+        this.recipeCategory = recipeCategory;
     }
     
     @Override
