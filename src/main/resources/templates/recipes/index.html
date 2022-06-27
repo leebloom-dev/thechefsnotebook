@@ -17,6 +17,7 @@
                     <th>#</th>
                     <th>Recipe</th>
                     <th>Cuisine</th>
+                    <th>Category</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td th:text="${recipe.id}">recipe id</td>
                     <td th:text="${recipe.name}">recipe name</td>
                     <td th:text="${recipe.cuisine}">cuisine</td>
+                    <td th:text="${recipe.recipeCategory.name}">cuisine</td>
                 </tr>
             </tbody>
         </table>

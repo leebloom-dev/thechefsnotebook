@@ -33,6 +33,18 @@
                 <p class="error" th:errors="${recipe.cuisine}"></p>
             </div>
 
+            <!-- User Selects a Category -->
+            <div class="mb-3">
+                <label class="form-label" for="recipeCategory">Select a category:</label>
+                <select class="form-select" id="recipeCategory" aria-label="Default select example" th:field="${recipe.recipeCategory}">
+                    <option selected value=" ">---</option>
+                    <th:block th:each="recipeCategory : ${recipeCategories}">
+                        <option th:text="${recipeCategory.name}" th:value="${recipeCategory.id}">default option</option>
+                    </th:block>
+                </select>
+                <p class="error" th:errors="${recipe.recipeCategory}"></p>
+            </div>
+
             <!-- User Submit Button -->
             <input class="btn btn-success" type="submit" value="submit" />
             <button class="btn btn-secondary" id="btnClearTextField">Clear</button>

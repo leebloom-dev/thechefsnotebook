@@ -19,21 +19,28 @@
                         <th>#</th>
                         <th>Recipe Names</th>
                         <th>Cuisine</th>
+                        <th>Category</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="recipe : ${recipes}">
-                        <td><input type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
+                        <td><input id="inputCheckbox" type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
                         <td th:text="${recipe.name}">recipe name</td>
                         <td th:text="${recipe.cuisine}">cuisine</td>
+                        <td th:text="${recipe.recipeCategory.name}">category</td>
                     </tr>
                 </tbody>
             </table>
             
             <!-- Submit Button -->
-            <input class="btn btn-danger" type="submit" value="delete" />
+            <input class="btn btn-danger" type="submit" value="Delete" />
+            <button class="btn btn-secondary" type="button" onclick="clearInputCheckbox()">Clear All</button>
+            <button class="btn btn-warning" type="button" onclick="selectInputCheckbox()">Select All</button>
 
         </form>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
 
     </body>
 </html>
