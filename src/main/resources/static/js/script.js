@@ -1,7 +1,9 @@
 // FIELDS
 const btnClearTextField = document.getElementById("btnClearTextField");
-const btnClearCheckbox = document.getElementById("btnClearCheckbox")
+const btnClearCheckbox = document.getElementById("btnClearCheckbox");
 const btnSelectCheckbox = document.getElementById("btnSelectCheckbox");
+const checkboxRecipe = document.getElementsByName("recipeIds");
+const checkboxCategory = document.getElementsByName("recipeCategoryIds");
 
 
 // FUNCTIONS
@@ -9,12 +11,41 @@ function clearInputField() {
     document.getElementById("inputField").value = '';
 }
 
-function clearInputCheckbox() {
-    document.getElementById("inputCheckbox").checked = false;
+// Clear Delete Recipe Checkboxes
+function clearInputCheckboxRecipe() {
+    for (let i=0; i<checkboxRecipe.length; i++) {
+        if (checkboxRecipe[i].type == 'checkbox') {
+            checkboxRecipe[i].checked = false;
+        }
+    }
 }
 
-function selectInputCheckbox() {
-    document.getElementById("inputCheckbox").checked = true;
+// Select All Recipe Checkboxes
+function selectInputCheckboxRecipe() {
+    for (let i=0; i<checkboxRecipe.length; i++) {
+        if(checkboxRecipe[i].type == 'checkbox') {
+            checkboxRecipe[i].checked = true;
+        }
+    }
+
+}
+
+// Clear Category Checkboxes
+function clearInputCheckboxCategory() {
+    for (let i=0; i<checkboxCategory.length; i++) {
+        if (checkboxCategory[i].type == 'checkbox') {
+            checkboxCategory[i].checked = false;
+        }
+    }
+}
+
+// Select All Category Checkboxes
+function selectInputCheckboxCategory() {
+    for (let i=0; i<checkboxCategory.length; i++) {
+        if(checkboxCategory[i].type == 'checkbox') {
+            checkboxCategory[i].checked = true;
+        }
+    }
 }
 
 
