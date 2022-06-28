@@ -13,8 +13,8 @@
         <!-- Search Form -->
         <form method="post" action="/recipes/search">
             <div class="mb-3">
-                <label class="form-label" for="searchRecipe">Enter recipe to search:</label>
-                <input class="form-control" id="searchRecipe" type="text" placeholder="Enter recipe" th:field="${recipe.name}" />
+                <label class="form-label" for="inputField">Enter recipe to search:</label>
+                <input class="form-control" id="inputField" type="text" placeholder="Enter recipe" th:field="${recipe.name}" />
                 <p class="error" th:errors="${recipe.name}"></p>
             </div>
             <button class="btn btn-primary" type="submit">Search</button>
@@ -25,14 +25,20 @@
         <!-- Display Searched -->
         <table class="table table-striped">
             <thead>
-                <th>#</th>
-                <th>Recipe</th>
-                <th>Cuisine</th>
+                <tr>
+                    <th>#</th>
+                    <th>Recipe</th>
+                    <th>Cuisine</th>
+                    <th>Category</th>
+                </tr>
             </thead>
             <tbody>
-                <td>#</td>
-                <td>Recipe</td>
-                <td>Cuisine</td>
+                <tr th:each="recipe : ${filteredRecipes}">
+                    <td th:text="${recipe.id}">#</td>
+                    <td th:text="${recipe.name}">recipe</td>
+                    <td th:text="${recipe.cuisine}">cuisine</td>
+                    <td th:text="${recipe.recipeCategory.name}">category</td>
+                </tr>
             </tbody>
         </table>
 

@@ -112,30 +112,29 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe());
         return "recipes/search";
     }
-
+    
     // responds to POST requests at URL "/recipes/search"
     @PostMapping("search")
     public String processSearchForm(@ModelAttribute @Valid Recipe recipeSearchInput,
-                                    Errors errors, Model model) {
-
-        List<Recipe> recipeList = new ArrayList<>();
-                            
+    Errors errors, Model model) {
+        
         if (errors.hasErrors()) {
             model.addAttribute("title", "Search Recipes");
             return "recipes/search";
         }
-
+        
         // TODO: Loop through database to see if the recipe name matches.
         // TODO: If recipe name does NOT exist, display "No recipe available."
         // TODO: If recipe name does exist, display the recipe info.
+
         for (Recipe recipe : recipeRepository.findAll()) {
-            if (recipeSearchInput.getName().toUpperCase().equals(recipe.getName())) {
-                recipeList.add(recipe);
+            if (recipe.getName().toUpperCase() == recipeSearchInput.getName().toUpperCase()) {
+                model.addAttribute("recipes", recipe);
+                break;
             }
         }
 
-        model.addAttribute("recipeList", recipeList);
-        return "redirect:/search";
+        return "redirect:/recipes/search";
     }
 
 }
