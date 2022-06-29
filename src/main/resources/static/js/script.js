@@ -7,6 +7,7 @@ const checkboxCategory = document.getElementsByName("recipeCategoryIds");
 
 
 // FUNCTIONS
+// Clear Input Text Field
 function clearInputField() {
     document.getElementById("inputField").value = '';
 }
