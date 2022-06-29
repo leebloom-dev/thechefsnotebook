@@ -1,5 +1,8 @@
 package com.thechefsnotebook.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,35 +113,20 @@ public class RecipeController {
         return "recipes/search";
     }
     
-    // TODO: Loop through database to see if the recipe name matches.
-    // TODO: If recipe name does NOT exist, display "No recipe available."
-    // TODO: If recipe name does exist, display the recipe info.
-
-    // // responds to POST requests at URL "/recipes/search"
-    // @PostMapping("search")
-    // public String processSearchForm(@ModelAttribute @Valid Recipe recipeSearchInput,
-    // Errors errors, Model model) {
-    //     model.addAttribute("title", "Search Recipes");
-        
-    //     if (errors.hasErrors()) {
-    //         model.addAttribute("title", "Search Recipes");
-    //         return "recipes/search";
-    //     }
-    
-    //     return "redirect:/recipes/search";
-    // }
-                
     // responds to POST requests at URL "/recipes/search"
     @PostMapping("search")
     public String processSearchForm(@RequestParam(required = false) String recipeSearch, Model model) {
-        model.addAttribute("title", "Search Recipes");
-
+        
+        List<Recipe> recipes = new ArrayList<>();
+        
         for (Recipe recipe : recipeRepository.findAll()) {
             if (recipe.getName().toUpperCase().equals(recipeSearch.toUpperCase())) {
-                model.addAttribute("recipes", recipe);
+                recipes.add(recipe);
             }
         }
-
+        
+        model.addAttribute("title", "Search Recipes");
+        model.addAttribute("recipes", recipes);
         return "recipes/search";
     }
                 
