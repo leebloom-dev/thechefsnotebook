@@ -110,23 +110,36 @@ public class RecipeController {
         return "recipes/search";
     }
     
+    // TODO: Loop through database to see if the recipe name matches.
+    // TODO: If recipe name does NOT exist, display "No recipe available."
+    // TODO: If recipe name does exist, display the recipe info.
+
+    // // responds to POST requests at URL "/recipes/search"
+    // @PostMapping("search")
+    // public String processSearchForm(@ModelAttribute @Valid Recipe recipeSearchInput,
+    // Errors errors, Model model) {
+    //     model.addAttribute("title", "Search Recipes");
+        
+    //     if (errors.hasErrors()) {
+    //         model.addAttribute("title", "Search Recipes");
+    //         return "recipes/search";
+    //     }
+    
+    //     return "redirect:/recipes/search";
+    // }
+                
     // responds to POST requests at URL "/recipes/search"
     @PostMapping("search")
-    public String processSearchForm(@ModelAttribute @Valid Recipe recipeSearchInput,
-    Errors errors, Model model) {
+    public String processSearchForm(@RequestParam(required = false) String recipeSearch, Model model) {
+        model.addAttribute("title", "Search Recipes");
 
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Search Recipes");
-            return "recipes/search";
+        for (Recipe recipe : recipeRepository.findAll()) {
+            if (recipe.getName().toUpperCase().equals(recipeSearch.toUpperCase())) {
+                model.addAttribute("recipes", recipe);
+            }
         }
-        
-        // TODO: Loop through database to see if the recipe name matches.
-        // TODO: If recipe name does NOT exist, display "No recipe available."
-        // TODO: If recipe name does exist, display the recipe info.
 
-        
-        
-        return "redirect:/recipes/search";
+        return "recipes/search";
     }
-    
+                
 }
