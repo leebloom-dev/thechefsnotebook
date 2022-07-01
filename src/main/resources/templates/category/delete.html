@@ -10,24 +10,27 @@
 
         <!-- BODY CONTENT -->
         <form method="post" action="/recipes/category/delete">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>#</td>
-                        <td>Recipe Category</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="recipeCategory : ${recipeCategories}">
-                        <td><input id="inputCheckbox" type="checkbox" name="recipeCategoryIds" th:value="${recipeCategory.id}" /></td>
-                        <td th:text="${recipeCategory.name}">Recipe Category</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <button class="btn btn-danger" type="submit">Delete</button>
-            <button class="btn btn-secondary" type="button" onclick="clearInputCheckboxCategory()">Clear All</button>
-            <button class="btn btn-warning" type="button" onclick="selectInputCheckboxCategory()">Select All</button>
+            <div class="mb-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipe Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipeCategory : ${recipeCategories}">
+                            <td><input id="inputCheckbox" type="checkbox" name="recipeCategoryIds" th:value="${recipeCategory.id}" /></td>
+                            <td th:text="${recipeCategory.name}">Recipe Category</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-secondary" type="button" onclick="clearInputCheckboxCategory()">Clear All</button>
+                <button class="btn btn-warning" type="button" onclick="selectInputCheckboxCategory()">Select All</button>
+            </div>
+            <p class="form-text">Before delete category, must delete recipe(s) containing that category.</p>
         </form>
 
         <!-- JavaScript -->
