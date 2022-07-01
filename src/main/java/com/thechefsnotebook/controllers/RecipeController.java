@@ -33,7 +33,7 @@ public class RecipeController {
 
     // responds to GET requests at URL "/recipes"
     @GetMapping
-    public String displayRecipeHomePage(Model model) {
+    public String displayRecipes(Model model) {
         model.addAttribute("title", "Recipe Home Page");
 
         // add list of recipes to the model
