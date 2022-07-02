@@ -2,6 +2,7 @@ package com.thechefsnotebook.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -33,14 +34,20 @@ public class RecipeController {
 
     // responds to GET requests at URL "/recipes"
     @GetMapping
-    public String displayRecipes(Model model) {
-        model.addAttribute("title", "Recipe Home Page");
-
-        // add list of recipes to the model
-        model.addAttribute("recipes", recipeRepository.findAll());
-
-        // add list of categories to the model
-        model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+    public String displayRecipes(@RequestParam(required = false) Integer categoryId ,Model model) {
+        if (categoryId == null) {
+            model.addAttribute("title", "All Recipes");
+            model.addAttribute("recipes", recipeRepository.findAll());
+        } else {
+            Optional<RecipeCategory> result = recipeCategoryRepository.findById(categoryId);
+            if (result.isEmpty()) {
+                model.addAttribute("title", "Invalid Category ID: " + categoryId);
+            } else {
+                RecipeCategory category = result.get();
+                model.addAttribute("title", category.getName() + " Recipes");
+                model.addAttribute("recipes", category.getRecipes());
+            }
+        }
         
         return "recipes/index";
     }
