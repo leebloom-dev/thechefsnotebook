@@ -20,7 +20,7 @@
             <tbody>
                 <tr th:each="recipeCategory : ${recipeCategories}">
                     <td th:text="${recipeCategory.id}">#</td>
-                    <td th:text="${recipeCategory.name}">Recipe Category</td>
+                    <td><a th:text="${recipeCategory.name}" th:href="'/recipes?categoryId=' + ${recipeCategory.id}"></a></td>
                 </tr>
             </tbody>
         </table>
