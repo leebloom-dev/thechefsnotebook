@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+
+        <!-- HEADER -->
+        <header th:replace="fragments :: header"></header>
+
+        <!-- BODY CONTENT -->
+
+        <!-- Form to create cuisines. -->
+        <form method="post" action="/recipes/cuisine/create">
+            <div class="mb-3">
+                <label for="inputField">Create a cuisine for your recipe.</label>
+                <input class="form-control" id="inputField" type="text" placeholder="Create a category..." th:field="${recipeCuisine.name}" />
+                <p class="error" th:errors="${recipeCuisine.name}"></p>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+        </form>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
+
+    </body>
+</html>

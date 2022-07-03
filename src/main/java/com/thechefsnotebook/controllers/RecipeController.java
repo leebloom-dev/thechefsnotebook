@@ -62,9 +62,9 @@ public class RecipeController {
             model.addAttribute("title", "All Recipes");
             model.addAttribute("recipes", recipeRepository.findAll());
         } else {
-            Optional<RecipeCuisine> result = recipeCuisineRepository.findById(categoryId);
+            Optional<RecipeCuisine> result = recipeCuisineRepository.findById(cuisineId);
             if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Category ID: " + categoryId);
+                model.addAttribute("title", "Invalid Category ID: " + cuisineId);
             } else {
                 RecipeCuisine category = result.get();
                 model.addAttribute("title", category.getName() + " Recipes");
@@ -82,6 +82,7 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
         model.addAttribute("recipeCategory", new RecipeCategory());
         model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        model.addAttribute("recipeCuisines", recipeCuisineRepository.findAll());
         
         return "recipes/create";
     }
