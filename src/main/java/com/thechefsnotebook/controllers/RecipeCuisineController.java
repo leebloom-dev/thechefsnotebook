@@ -52,6 +52,13 @@ public class RecipeCuisineController {
     }
 
     // Respondes to GET requests at URL "/recipes/cuisine/delete"
+    @GetMapping("delete")
+    public String renderDeleteForm(Model model) {
+        model.addAttribute("title", "Delete Cuisine");
+        model.addAttribute("recipeCuisines", recipeCuisineRepository.findAll());
+        return "cuisine/delete";
+    }
+
     // Respondes to POST requests at URL "/recipes/cuisine/delete"
     
 }
