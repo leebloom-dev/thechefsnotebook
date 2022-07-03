@@ -17,7 +17,7 @@ public class RecipeCuisine extends AbstractEntity {
 
     // Relationship between one cuisine to many recipes
     @OneToMany(mappedBy = "recipeCuisine")
-    private final List<Recipe> cuisines = new ArrayList<>();
+    private final List<Recipe> recipes = new ArrayList<>();
 
     public RecipeCuisine(String name) {
         this.name = name;
@@ -35,8 +35,8 @@ public class RecipeCuisine extends AbstractEntity {
         this.name = name;
     }
 
-    public List<Recipe> getCuisines() {
-        return cuisines;
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 
 }
