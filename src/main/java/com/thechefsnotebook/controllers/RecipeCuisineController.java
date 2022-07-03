@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.RecipeCuisineRepository;
 import com.thechefsnotebook.models.RecipeCuisine;
@@ -60,5 +61,16 @@ public class RecipeCuisineController {
     }
 
     // Respondes to POST requests at URL "/recipes/cuisine/delete"
+    @PostMapping("delete")
+    public String processDeleteForm(@RequestParam(required = false) int[] recipeCuisineIds) {
+        // If the array of cuisine ids is NOT null, delete from repository
+        if (recipeCuisineIds != null) {
+            for (int recipeCuisineId : recipeCuisineIds) {
+                recipeCuisineRepository.deleteById(recipeCuisineId);
+            }
+        }
+
+        return "redirect:";
+    }
     
 }
