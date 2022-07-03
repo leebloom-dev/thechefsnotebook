@@ -1,7 +1,7 @@
 // FIELDS
 const btnClearTextField = document.getElementById("btnClearTextField");
-const btnClearCheckbox = document.getElementById("btnClearCheckbox");
-const btnSelectCheckbox = document.getElementById("btnSelectCheckbox");
+
+// In the html attribute name, the value holds an array of ids
 const checkboxRecipe = document.getElementsByName("recipeIds");
 const checkboxCategory = document.getElementsByName("recipeCategoryIds");
 const checkboxCuisine = document.getElementsByName("recipeCuisineIds");
@@ -51,10 +51,10 @@ function selectInputCheckboxCategory() {
 }
 
 // Clear Cuisine Checkboxes
-function selectInputCheckboxCuisine() {
+function clearInputCheckboxCuisine() {
     for (let i = 0; i < checkboxCuisine.length; i++) {
-        if (checkboxCuisine.type = 'checkbox') {
-            checkboxCuisine.checked = false;
+        if (checkboxCuisine[i].type == 'checkbox') {
+            checkboxCuisine[i].checked = false;
         }
     }
 }
@@ -62,8 +62,8 @@ function selectInputCheckboxCuisine() {
 // Select All Cuisine Checkboxes
 function selectInputCheckboxCuisine() {
     for (let i = 0; i < checkboxCuisine.length; i++) {
-        if (checkboxCuisine.type = 'checkbox') {
-            checkboxCuisine.checked = true;
+        if (checkboxCuisine[i].type == 'checkbox') {
+            checkboxCuisine[i].checked = true;
         }
     }
 }
