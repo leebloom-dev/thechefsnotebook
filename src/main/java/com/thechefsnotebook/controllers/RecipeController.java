@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.RecipeCategoryRepository;
+import com.thechefsnotebook.data.RecipeCuisineRepository;
 import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Recipe;
 import com.thechefsnotebook.models.RecipeCategory;
+import com.thechefsnotebook.models.RecipeCuisine;
 
 @Controller
 @RequestMapping("recipes") // URL "localhost:8080/recipes"
@@ -29,11 +31,18 @@ public class RecipeController {
     private RecipeRepository recipeRepository;
 
     @Autowired
+    private RecipeCuisineRepository recipeCuisineRepository;
+
+    @Autowired
     private RecipeCategoryRepository recipeCategoryRepository;
 
     // responds to GET requests at URL "/recipes"
     @GetMapping
-    public String displayRecipes(@RequestParam(required = false) Integer categoryId ,Model model) {
+    public String displayRecipes(@RequestParam(required = false) Integer categoryId,
+                                 @RequestParam(required = false) Integer cuisineId,
+                                 Model model) {
+
+        // Request Parameter filters table of specific category.
         if (categoryId == null) {
             model.addAttribute("title", "All Recipes");
             model.addAttribute("recipes", recipeRepository.findAll());
@@ -43,6 +52,21 @@ public class RecipeController {
                 model.addAttribute("title", "Invalid Category ID: " + categoryId);
             } else {
                 RecipeCategory category = result.get();
+                model.addAttribute("title", category.getName() + " Recipes");
+                model.addAttribute("recipes", category.getRecipes());
+            }
+        }
+        
+        // Request Parameter filters table of specific cuisine.
+        if (cuisineId == null) {
+            model.addAttribute("title", "All Recipes");
+            model.addAttribute("recipes", recipeRepository.findAll());
+        } else {
+            Optional<RecipeCuisine> result = recipeCuisineRepository.findById(cuisineId);
+            if (result.isEmpty()) {
+                model.addAttribute("title", "Invalid Category ID: " + cuisineId);
+            } else {
+                RecipeCuisine category = result.get();
                 model.addAttribute("title", category.getName() + " Recipes");
                 model.addAttribute("recipes", category.getRecipes());
             }
@@ -58,6 +82,7 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
         model.addAttribute("recipeCategory", new RecipeCategory());
         model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        model.addAttribute("recipeCuisines", recipeCuisineRepository.findAll());
         
         return "recipes/create";
     }

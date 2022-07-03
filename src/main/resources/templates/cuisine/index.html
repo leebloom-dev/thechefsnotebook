@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+
+        <!-- HEADER -->
+
+        <header th:replace="fragments :: header"></header>
+
+        <!-- BODY CONTENT -->
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cuisine</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="recipeCuisine : ${recipeCuisines}">
+                    <td th:text="${recipeCuisine.id}">#</td>
+                    <td><a th:text="${recipeCuisine.name}" th:href="'/recipes?cuisineId=' + ${recipeCuisine.id}">Cuisine</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
