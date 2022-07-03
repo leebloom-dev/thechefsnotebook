@@ -13,16 +13,18 @@ public class Recipe extends AbstractEntity {
     @Size(min = 3, max = 50, message = "Must be within 3 to 50 characters!")
     private String name;
 
-    @NotBlank(message = "Must select a cuisine!")
-    private String cuisine;
+    @ManyToOne
+    @NotNull(message = "A cuisine is Required! Please create a cuisine...")
+    private RecipeCuisine recipeCuisine;
 
     @ManyToOne
-    @NotNull(message = "A recipe category is required! Please create a category...")
+    @NotNull(message = "A category is required! Please create a category...")
     private RecipeCategory recipeCategory;
 
-    public Recipe(String name, String cuisine, RecipeCategory recipeCategory) {
+
+    public Recipe(String name, RecipeCuisine recipeCuisine, RecipeCategory recipeCategory) {
         this.name = name;
-        this.cuisine = cuisine;
+        this.recipeCuisine = recipeCuisine;
         this.recipeCategory = recipeCategory;
     }
 
@@ -37,12 +39,12 @@ public class Recipe extends AbstractEntity {
         this.name = name;
     }
 
-    public String getCuisine() {
-        return cuisine;
+    public RecipeCuisine getRecipeCuisine() {
+        return recipeCuisine;
     }
 
-    public void setCuisine(String cuisine) {
-        this.cuisine = cuisine;
+    public void setRecipeCuisine(RecipeCuisine recipeCuisine) {
+        this.recipeCuisine = recipeCuisine;
     }
 
     public RecipeCategory getRecipeCategory() {

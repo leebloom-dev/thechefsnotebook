@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.thechefsnotebook.data.CuisineData;
 import com.thechefsnotebook.data.RecipeCategoryRepository;
 import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Recipe;
@@ -60,9 +59,6 @@ public class RecipeController {
         model.addAttribute("recipeCategory", new RecipeCategory());
         model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
         
-        // add sorted ascending list(String) of cuisines to the model
-        model.addAttribute("cuisines", CuisineData.getAll());
-        
         return "recipes/create";
     }
     
@@ -75,7 +71,7 @@ public class RecipeController {
         // Model name can NOT have camel case!!!
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
-            model.addAttribute("cuisines", CuisineData.getAll());
+            model.addAttribute("cuisines", recipeCategoryRepository.findAll());
             model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
             return "recipes/create";
         }
