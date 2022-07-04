@@ -13,13 +13,16 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Recipe Category</th>
+                    <th>Category</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="recipeCategory : ${recipeCategories}">
                     <td th:text="${recipeCategory.id}">#</td>
-                    <td><a th:text="${recipeCategory.name}" th:href="'/recipes?categoryId=' + ${recipeCategory.id}"></a></td>
+                    <td>
+                        <a th:text="${recipeCategory.name}" 
+                           th:href="'/recipes?categoryId=' + ${recipeCategory.id}">Category</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
