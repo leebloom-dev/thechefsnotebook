@@ -56,7 +56,7 @@ public class RecipeController {
                 model.addAttribute("recipes", category.getRecipes());
             }
         }
-        
+    
         // Request Parameter filters table of specific cuisine.
         if (cuisineId == null) {
             model.addAttribute("title", "All Recipes");
@@ -64,14 +64,14 @@ public class RecipeController {
         } else {
             Optional<RecipeCuisine> result = recipeCuisineRepository.findById(cuisineId);
             if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Category ID: " + cuisineId);
+                model.addAttribute("title", "Invalid Cuisine ID: " + cuisineId);
             } else {
-                RecipeCuisine category = result.get();
-                model.addAttribute("title", category.getName() + " Recipes");
-                model.addAttribute("recipes", category.getRecipes());
+                RecipeCuisine cuisine = result.get();
+                model.addAttribute("title", cuisine.getName() + " Recipes");
+                model.addAttribute("recipes", cuisine.getRecipes());
             }
         }
-        
+
         return "recipes/index";
     }
     
