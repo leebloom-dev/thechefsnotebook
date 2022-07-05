@@ -71,7 +71,6 @@ public class RecipeController {
                 model.addAttribute("recipes", cuisine.getRecipes());
             }
         }
-
         return "recipes/index";
     }
     
