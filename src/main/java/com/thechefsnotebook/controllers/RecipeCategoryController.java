@@ -27,6 +27,8 @@ public class RecipeCategoryController {
     public String displayCategories(Model model) {
         model.addAttribute("title", "Recipe Category");
         model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
+        model.addAttribute("isCategory", true);
+        model.addAttribute("isCuisine", false);
         return "category/index";
     }
     

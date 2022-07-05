@@ -16,7 +16,7 @@ public class RecipeCategory extends AbstractEntity {
     private String name;
 
     @OneToMany(mappedBy = "recipeCategory")
-    private final List<Recipe> recipes = new ArrayList<>();
+    private final List<Recipe> RECIPES = new ArrayList<>();
 
     public RecipeCategory(String name) {
         this.name = name;
@@ -34,7 +34,7 @@ public class RecipeCategory extends AbstractEntity {
     }
 
     public List<Recipe> getRecipes() {
-        return recipes;
+        return RECIPES;
     }
 
  }
