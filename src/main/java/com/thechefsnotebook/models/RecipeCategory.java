@@ -8,6 +8,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.thechefsnotebook.data.enumSearchType.Type;
+
 @Entity
 public class RecipeCategory extends AbstractEntity {
     
@@ -16,7 +18,9 @@ public class RecipeCategory extends AbstractEntity {
     private String name;
 
     @OneToMany(mappedBy = "recipeCategory")
-    private final List<Recipe> RECIPES = new ArrayList<>();
+    private final List<Recipe> recipes = new ArrayList<>();
+
+    private final String TYPE = Type.CATEGORY.getType();
 
     public RecipeCategory(String name) {
         this.name = name;
@@ -34,7 +38,11 @@ public class RecipeCategory extends AbstractEntity {
     }
 
     public List<Recipe> getRecipes() {
-        return RECIPES;
+        return recipes;
+    }
+
+    public String getTYPE() {
+        return TYPE;
     }
 
  }

@@ -21,7 +21,8 @@
                     <td th:text="${recipeCategory.id}">#</td>
                     <td>
                         <a th:text="${recipeCategory.name}" 
-                           th:href="'/recipes?categoryId=' + ${recipeCategory.id}">Category</a>
+                           th:href="'/recipes?categoryId=' + ${recipeCategory.id}
+                                                + '&type=' + ${recipeCategory.TYPE}">Category</a>
                     </td>
                 </tr>
             </tbody>

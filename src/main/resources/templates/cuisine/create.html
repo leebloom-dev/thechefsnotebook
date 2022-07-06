@@ -11,8 +11,8 @@
         <!-- Form to create cuisines. -->
         <form method="post" action="/recipes/cuisine/create">
             <div class="mb-3">
-                <label for="inputField">Create a cuisine for your recipe.</label>
-                <input class="form-control" id="inputField" type="text" placeholder="Create a category..." th:field="${recipeCuisine.name}" />
+                <label class="form-label" for="inputField">Create a cuisine for your recipe.</label>
+                <input class="form-control" id="inputField" type="text" placeholder="Create a cuisine..." th:field="${recipeCuisine.name}" />
                 <p class="error" th:errors="${recipeCuisine.name}"></p>
             </div>
 
