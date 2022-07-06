@@ -40,37 +40,47 @@ public class RecipeController {
     @GetMapping
     public String displayRecipes(@RequestParam(required = false) Integer categoryId,
                                  @RequestParam(required = false) Integer cuisineId,
+                                 @RequestParam(required = false) String type,
                                  Model model) {
 
         // Request Parameter filters table of specific category.
-        if (categoryId == null) {
-            model.addAttribute("title", "All Recipes");
-            model.addAttribute("recipes", recipeRepository.findAll());
-        } else {
-            Optional<RecipeCategory> result = recipeCategoryRepository.findById(categoryId);
-            if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Category ID: " + categoryId);
+        if (type.equals("category")) {
+            if (categoryId == null) {
+                model.addAttribute("title", "All Recipes");
+                model.addAttribute("recipes", recipeRepository.findAll());
             } else {
-                RecipeCategory category = result.get();
-                model.addAttribute("title", category.getName() + " Recipes");
-                model.addAttribute("recipes", category.getRecipes());
+                Optional<RecipeCategory> result = recipeCategoryRepository.findById(categoryId);
+                if (result.isEmpty()) {
+                    model.addAttribute("title", "Invalid Category ID: " + categoryId);
+                } else {
+                    RecipeCategory category = result.get();
+                    model.addAttribute("title", category.getName() + " Recipes");
+                    model.addAttribute("recipes", category.getRecipes());
+                }
             }
+            return "recipes/index";
         }
-    
+        
         // Request Parameter filters table of specific cuisine.
-        if (cuisineId == null) {
-            model.addAttribute("title", "All Recipes");
-            model.addAttribute("recipes", recipeRepository.findAll());
-        } else {
-            Optional<RecipeCuisine> result = recipeCuisineRepository.findById(cuisineId);
-            if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Cuisine ID: " + cuisineId);
+        if (type.equals("cuisine")) {
+            if (cuisineId == null) {
+                model.addAttribute("title", "All Recipes");
+                model.addAttribute("recipes", recipeRepository.findAll());
             } else {
-                RecipeCuisine cuisine = result.get();
-                model.addAttribute("title", cuisine.getName() + " Recipes");
-                model.addAttribute("recipes", cuisine.getRecipes());
+                Optional<RecipeCuisine> result = recipeCuisineRepository.findById(cuisineId);
+                if (result.isEmpty()) {
+                    model.addAttribute("title", "Invalid Cuisine ID: " + cuisineId);
+                } else {
+                    RecipeCuisine cuisine = result.get();
+                    model.addAttribute("title", cuisine.getName() + " Recipes");
+                    model.addAttribute("recipes", cuisine.getRecipes());
+                }
             }
+            return "recipes/index";
         }
+        
+        model.addAttribute("title", "All Recipes");
+        model.addAttribute("recipes", recipeRepository.findAll());
         return "recipes/index";
     }
     
@@ -92,19 +102,18 @@ public class RecipeController {
     Errors errors, Model model) {
         
         // error validation if true
-        // Model name can NOT have camel case!!!
         if (errors.hasErrors()) {
             model.addAttribute("title", "Recipe Form Page");
-            model.addAttribute("cuisines", recipeCategoryRepository.findAll());
+            model.addAttribute("recipeCuisines", recipeCategoryRepository.findAll());
             model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
             return "recipes/create";
         }
         
         // add recipe name to the array list
         recipeRepository.save(newRecipe);
-        
+
         // redirect to URL "/recipes"
-        return "redirect:";
+        return "redirect:?type=none";
 
     }
 
@@ -128,7 +137,7 @@ public class RecipeController {
         }
 
         // redirect to URL "/recipes"
-        return "redirect:";
+        return "redirect:?type=none";
 
     }
 
@@ -156,5 +165,5 @@ public class RecipeController {
         model.addAttribute("recipes", recipes);
         return "recipes/search";
     }
-                
+
 }
