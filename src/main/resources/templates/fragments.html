@@ -14,10 +14,12 @@
     </head>
     <body>
 
-        <!-- Navigation -->
+        <!-- HEADER -->
         <header th:fragment="header">
             <h1 th:text="${title}">Default Heading</h1>
-            <nav class="navbar navbar-expand-lg bg-light">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     
                     <!-- Logo -->
@@ -82,6 +84,71 @@
             </nav>
             <br>
         </header>
+
+        <!-- FOOTER -->
+        <footer th:fragment="footer">
+            <hr>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/">[Logo] The Chefs's Notebook</a></h5>
+                            <ul class="list-unstyled small texted-muted">
+                                <li class="mb-2">Designed and built with all the love in the world to make chefs work easier.</li>
+                                <li class="mb-2">Code license MIT, docs <a href="https://creativecommons.org/licenses/by/3.0/">CC 3.0</a></li>
+                                <li class="mb-2">Site Updated: July 8, 2022</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Links</h5>
+                            <ul class="list-unstyled small texted-muted">
+                                <li class="mb-2"><a href="/recipes?type=none">Recipes</a></li>
+                                <li class="mb-2"><a href="/recipes/cuisine">Cuisines</a></li>
+                                <li class="mb-2"><a href="/recipes/category">Categories</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Blog</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Swag Store</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Guides</h5>
+                            <ul class="list-unstyled small texted-muted">
+                                <li class="mb-2"><a class="link-secondary" href="#">Getting Started</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Cutting Techniques</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Meal Prep</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Nutrition Facts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Community</h5>
+                            <ul class="list-unstyled small texted-muted">
+                                <li class="mb-2"><a class="link-secondary" href="#">Issues</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Discussions</a></li>
+                                <li class="mb-2"><a class="link-secondary" href="#">Sponsors</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </footer>
 
     </body>
 </html>
