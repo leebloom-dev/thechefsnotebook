@@ -89,11 +89,21 @@
         <footer th:fragment="footer">
             <hr>
             <div class="row row-cols-1 row-cols-md-4 g-4">
-
+    
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="/">[Logo] The Chefs's Notebook</a></h5>
+                            <div class="card-title">
+                                <!-- TODO: Create a logo for your website -->
+                                <a class="d-inline-flex align-items-center text-decoration-none">
+                                    <!-- Logo goes here -->
+                                    <svg class="d-block me-2" height="30" width="30">
+                                        <circle cx="15" cy="15" r="14" stroke="black" stroke-width="1" fill="black" />
+                                    </svg>
+                                    <!-- Company name goes here -->
+                                    <span class="fs-5">The Chef's Notebook</span>
+                                </a>
+                            </div>
                             <ul class="list-unstyled small texted-muted">
                                 <li class="mb-2">Designed and built with all the love in the world to make chefs work easier.</li>
                                 <li class="mb-2">Code license MIT, docs <a href="https://creativecommons.org/licenses/by/3.0/">CC 3.0</a></li>
@@ -132,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body">
@@ -145,8 +155,7 @@
                         </div>
                     </div>
                 </div>
-
-                </div>
+    
             </div>
         </footer>
 
