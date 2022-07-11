@@ -89,75 +89,19 @@
 
         <!-- FOOTER -->
         <footer th:fragment="footer">
-            <hr>
-            <div class="row row-cols-1 row-cols-md-4 g-4">
-    
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="card-title">
-                                <!-- TODO: Create a logo for your website -->
-                                <a class="d-inline-flex align-items-center text-decoration-none" href="/">
-                                    <!-- Logo goes here -->
-                                    <img src="/img/logo.png" alt="logo" height="30" />
-                                
-                                    <!-- Company name goes here -->
-                                    <span class="fs-5">The Chef's Notebook</span>
-                                </a>
-                            </div>
-                            <ul class="list-unstyled small texted-muted">
-                                <li class="mb-2">Designed and built with all the love in the world to make chefs work easier.</li>
-                                <li class="mb-2">Code license MIT, docs <a href="https://creativecommons.org/licenses/by/3.0/">CC 3.0</a></li>
-                                <li class="mb-2">Site Updated: July 8, 2022</li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="footer-container">
+                <div class="vertical-center">
+                    <a href="/">
+                        <img class="footer-logo" src="/img/logo.png" />
+                        <h5>The Chef's Notebook</h5>
+                    </a>
                 </div>
-                    
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Links</h5>
-                            <ul class="list-unstyled small texted-muted">
-                                <li class="mb-2"><a href="/recipes?type=none">Recipes</a></li>
-                                <li class="mb-2"><a href="/recipes/cuisine">Cuisines</a></li>
-                                <li class="mb-2"><a href="/recipes/category">Categories</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Blog</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Swag Store</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Guides</h5>
-                            <ul class="list-unstyled small texted-muted">
-                                <li class="mb-2"><a class="link-secondary" href="#">Getting Started</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Cutting Techniques</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Meal Prep</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Nutrition Facts</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Community</h5>
-                            <ul class="list-unstyled small texted-muted">
-                                <li class="mb-2"><a class="link-secondary" href="#">Issues</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Discussions</a></li>
-                                <li class="mb-2"><a class="link-secondary" href="#">Sponsors</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-    
             </div>
+            <div class="footer-container">
+                <h5>Links</h5>
+            </div>
+            <div class="footer-container">Guides</div>
+            <div class="footer-container">Community</div>
         </footer>
 
     </body>
