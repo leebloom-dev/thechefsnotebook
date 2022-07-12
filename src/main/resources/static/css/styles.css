@@ -19,42 +19,68 @@ header {
 }
 
 /* FOOTER */
-footer {
-    background-color: gold;
-    display: grid;
-    grid-template-columns: 30% auto auto auto;
-    gap: 10px;
+#footer-container-2 a,
+#footer-container-3 a,
+#footer-container-4 a {
+    display: block;
 }
 
-/* For every div child one step below the footer only. */
-footer > div.footer-container {
-    background-color: ghostwhite;
-    margin: 10px;
-    padding: 20px;
+.footer-container {
+    margin-top: 7px;
+    background-color: #e5e5e5;
 }
 
-/* Footer Link Lists */
-.footer-container ul {
-    list-style: none;
+    .footer-container-header {
+        height: 40px;
+    }
+
+        .footer-logo {
+            height: 30px;
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            float: left;
+        }
+
+        .footer-container-title {
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+#footer-copyright {
+    background-color: #e5e5e5;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.footer-container-header {
-    position: relative;
-}
 
-.footer-container-header img {
-    height: 30px;
-    float: left;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
+@media only screen and (max-width: 900px) {
+    #footer-container-1,
+    #footer-container-2,
+    #footer-container-3,
+    #footer-container-4 {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
 
-.footer-container-header h5 {
-    font-size: 20px;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    .footer-container-header {
+        height: fit-content;
+    }
+
+    .footer-logo {
+        float: none;
+        top: 0;
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    
+    .footer-container-title {
+        top: 0;
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
 }
