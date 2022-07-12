@@ -89,19 +89,56 @@
 
         <!-- FOOTER -->
         <footer th:fragment="footer">
+
+            <!-- Container 1 -->
             <div class="footer-container">
-                <div class="vertical-center">
-                    <a href="/">
-                        <img class="footer-logo" src="/img/logo.png" />
-                        <h5>The Chef's Notebook</h5>
-                    </a>
+                <div class="footer-container-header">
+                    <img class="footer-logo" src="/img/logo.png" alt="Logo" />
+                    <h5>
+                        <a href="/">The Chef's Notebook</a>
+                    </h5>
                 </div>
+                <p>Designed and built with love in the world to make the lives of chefs easier.</p>
+                <p>Code license MIT, doc <a href="https://creativecommons.org/licenses/by/3.0/">CC 3.0</a></p>
+                <p>Site Updated: July 11, 2022</p>
             </div>
+
+            <!-- Container 2 -->
             <div class="footer-container">
-                <h5>Links</h5>
+                <div class="footer-container-header">
+                    <h5>Links</h5>
+                </div>
+                <ul>
+                    <li><a href="/recipes?type=none">Recipes</a></li>
+                    <li><a href="/recipes/cuisine">Cuisines</a></li>
+                    <li><a href="/recipes/category">Categories</a></li>
+                </ul>
             </div>
-            <div class="footer-container">Guides</div>
-            <div class="footer-container">Community</div>
+            
+            <!-- Container 3 -->
+            <div class="footer-container">
+                <div class="footer-container-header">
+                    <h5>Guides</h5>
+                </div>
+                <ul>
+                    <li><a class="disabled-link" href="#">Keeping your knife sharp</a></li>
+                    <li><a class="disabled-link" href="#">Meal prep like a chef</a></li>
+                    <li><a class="disabled-link" href="#">Ways to minimize waste</a></li>
+                    <li><a class="disabled-link" href="#">The kitchen hygiene</a></li>
+                </ul>
+            </div>
+            
+            <!-- Container 4 -->
+            <div class="footer-container">
+                <div class="footer-container-header">
+                    <h5>Community</h5>
+                </div>
+                <ul>
+                    <li><a class="disabled-link" href="#">Issues</a></li>
+                    <li><a class="disabled-link" href="#">Discussions</a></li>
+                    <li><a class="disabled-link" href="#">Sponsors</a></li>
+                </ul>
+            </div>
         </footer>
 
     </body>

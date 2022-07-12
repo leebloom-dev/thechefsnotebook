@@ -1,3 +1,8 @@
+/* GLOBAL */
+.disabled-link {
+    color: gray;
+}
+
 /* HEADER */
 header {
     background-color: ghostwhite;
@@ -17,25 +22,39 @@ header {
 footer {
     background-color: gold;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 30% auto auto auto;
     gap: 10px;
 }
 
 /* For every div child one step below the footer only. */
-footer > div {
+footer > div.footer-container {
     background-color: ghostwhite;
     margin: 10px;
     padding: 20px;
-    font-size: 20px;
 }
 
-/* Select all <a> tags inside the footer. */
-footer a {
-    text-decoration: none;
-    color: black;
+/* Footer Link Lists */
+.footer-container ul {
+    list-style: none;
 }
 
-.footer-logo {
+.footer-container-header {
+    position: relative;
+}
+
+.footer-container-header img {
     height: 30px;
     float: left;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.footer-container-header h5 {
+    font-size: 20px;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
