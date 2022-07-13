@@ -17,14 +17,14 @@
         <!-- HEADER -->
         <header th:fragment="header">
             <h1 th:text="${title}">Default Heading</h1>
-            
-            <!-- Navigation -->
-            <nav class="navbar navbar-expand-lg">
+
+            <!-- Navigation (Update) -->
+            <nav class=" navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    
+
                     <!-- Logo -->
                     <a class="navbar-brand" href="/">
-                        <img src="/img/logo.png" alt="logo" height="60" />
+                        <img src="/img/logo.png" alt="logo" height="60px" />
                     </a>
 
                     <!-- Toggle Nav Button -->
@@ -32,16 +32,16 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <!-- Navigation Links -->
+                    <!-- Links -->
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
-                            
+
                             <!-- Home -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             
-                            <!-- Recipes - Dropdown -->
+                            <!-- Recipes - Dropdown Links -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Recipes
@@ -52,7 +52,7 @@
                                     <li><a class="dropdown-item" href="/recipes/delete">Delete Recipe</a></li>
                                 </ul>
                             </li>
-                                
+
                             <!-- Cuisines - Dropdown -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,10 +78,13 @@
                             </li>
                             
                             <!-- Search -->
-                            <li><a class="nav-link" href="/recipes/search">Search Recipe</a></li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/recipes/search">Search Recipe</a>
+                            </li>
+
                         </ul>
                     </div>
+
                 </div>
             </nav>
             <br>
