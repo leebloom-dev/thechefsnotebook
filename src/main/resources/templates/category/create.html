@@ -4,25 +4,28 @@
     <body>
 
         <!-- HEADER -->
-
         <header th:replace="fragments :: header"></header>
     
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <!-- Form to create recipe category -->
-        <form method="post" action="/recipes/category/create">
-            <div class="mb-3">
-                <label class="form-label" for="inputField">Enter a category for a recipe:</label>
-                <input class="form-control" id="inputField" placeholder="Recipe Category" th:field="${recipeCategory.name}" />
-                <p class="error" th:errors="${recipeCategory.name}"></p>
-            </div>
+            <h1 th:text="${title}">Default Heading</h1>
+    
+            <!-- Form to create recipe category -->
+            <form method="post" action="/recipes/category/create">
+                <div class="mb-3">
+                    <label class="form-label" for="inputField">Enter a category for a recipe:</label>
+                    <input class="form-control" id="inputField" placeholder="Recipe Category" th:field="${recipeCategory.name}" />
+                    <p class="error" th:errors="${recipeCategory.name}"></p>
+                </div>
+    
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+            </form>
 
-            <button class="btn btn-primary" type="submit">Submit</button>
-            <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
-        </form>
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
         <!-- JavaScript -->

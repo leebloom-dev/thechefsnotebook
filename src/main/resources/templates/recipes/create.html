@@ -4,53 +4,56 @@
     <body>
         
         <!-- HEADER -->
-
         <header th:replace="fragments :: header"></header>
 
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <!-- Recipe Form -->
-        <form method="post" action="/recipes/create">
-            <!-- User Inputs Recipe Name -->
-            <div class="mb-3"> <!-- margin bottom - size -->
-                <label class="form-label" for="inputField">Enter recipe name (3 to 50 characters):</label>
-                <!-- Thymeleaf calls constructor to pass in data -->
-                <input class="form-control" type="text" id="inputField" placeholder="Recipe Name" th:field="${recipe.name}" />
-                <!-- Thymeleaf inserts error message related to field -->
-                <p class="error" th:errors="${recipe.name}"></p>
-            </div>
+            <h1 th:text="${title}">Default Heading</h1>
+    
+            <!-- Recipe Form -->
+            <form method="post" action="/recipes/create">
+                <!-- User Inputs Recipe Name -->
+                <div class="mb-3"> <!-- margin bottom - size -->
+                    <label class="form-label" for="inputField">Enter recipe name (3 to 50 characters):</label>
+                    <!-- Thymeleaf calls constructor to pass in data -->
+                    <input class="form-control" type="text" id="inputField" placeholder="Recipe Name" th:field="${recipe.name}" />
+                    <!-- Thymeleaf inserts error message related to field -->
+                    <p class="error" th:errors="${recipe.name}"></p>
+                </div>
+    
+                <!-- User Selects a Cuisine -->
+                <div class="mb-3">
+                    <label class="form-label" for="cuisine">Select a cuisine:</label>
+                    <select class="form-select" id="cuisine" aria-label="Default select example" th:field="${recipe.recipeCuisine}">
+                        <option selected value=" ">---</option>
+                        <th:block th:each="recipeCuisine : ${recipeCuisines}">
+                            <option th:text="${recipeCuisine.name}" th:value="${recipeCuisine.id}">default option</option>
+                        </th:block>
+                    </select>
+                    <p class="error" th:errors="${recipe.recipeCuisine}"></p>
+                </div>
+    
+                <!-- User Selects a Category -->
+                <div class="mb-3">
+                    <label class="form-label" for="recipeCategory">Select a category:</label>
+                    <select class="form-select" id="recipeCategory" aria-label="Default select example" th:field="${recipe.recipeCategory}">
+                        <option selected value=" ">---</option>
+                        <th:block th:each="recipeCategory : ${recipeCategories}">
+                            <option th:text="${recipeCategory.name}" th:value="${recipeCategory.id}">default option</option>
+                        </th:block>
+                    </select>
+                    <p class="error" th:errors="${recipe.recipeCategory}"></p>
+                </div>
+    
+                <!-- User Submit Button -->
+                <input class="btn btn-success" type="submit" value="Submit" />
+                <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+            </form>
 
-            <!-- User Selects a Cuisine -->
-            <div class="mb-3">
-                <label class="form-label" for="cuisine">Select a cuisine:</label>
-                <select class="form-select" id="cuisine" aria-label="Default select example" th:field="${recipe.recipeCuisine}">
-                    <option selected value=" ">---</option>
-                    <th:block th:each="recipeCuisine : ${recipeCuisines}">
-                        <option th:text="${recipeCuisine.name}" th:value="${recipeCuisine.id}">default option</option>
-                    </th:block>
-                </select>
-                <p class="error" th:errors="${recipe.recipeCuisine}"></p>
-            </div>
-
-            <!-- User Selects a Category -->
-            <div class="mb-3">
-                <label class="form-label" for="recipeCategory">Select a category:</label>
-                <select class="form-select" id="recipeCategory" aria-label="Default select example" th:field="${recipe.recipeCategory}">
-                    <option selected value=" ">---</option>
-                    <th:block th:each="recipeCategory : ${recipeCategories}">
-                        <option th:text="${recipeCategory.name}" th:value="${recipeCategory.id}">default option</option>
-                    </th:block>
-                </select>
-                <p class="error" th:errors="${recipe.recipeCategory}"></p>
-            </div>
-
-            <!-- User Submit Button -->
-            <input class="btn btn-success" type="submit" value="Submit" />
-            <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
-        </form>
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
         <!-- JavaScript -->
