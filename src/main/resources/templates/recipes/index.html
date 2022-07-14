@@ -4,33 +4,36 @@
     <body>
         
         <!-- HEADER -->
-
         <header th:replace="fragments :: header"></header>
 
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <!-- Table of Recipes -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Recipe</th>
-                    <th>Cuisine</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="recipe : ${recipes}">
-                    <td th:text="${recipe.id}">recipe id</td>
-                    <td th:text="${recipe.name}">recipe name</td>
-                    <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
-                    <td th:text="${recipe.recipeCategory.name}">cuisine</td>
-                </tr>
-            </tbody>
-        </table>
+            <h1 th:text="${title}">Default Heading</h1>
+            
+            <!-- Table of Recipes -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Cuisine</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipe : ${recipes}">
+                        <td th:text="${recipe.id}">recipe id</td>
+                        <td th:text="${recipe.name}">recipe name</td>
+                        <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
+                        <td th:text="${recipe.recipeCategory.name}">cuisine</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
     </body>

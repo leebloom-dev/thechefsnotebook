@@ -4,32 +4,35 @@
     <body>
 
         <!-- HEADER -->
-
         <header th:replace="fragments :: header"></header>
 
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="recipeCategory : ${recipeCategories}">
-                    <td th:text="${recipeCategory.id}">#</td>
-                    <td>
-                        <a th:text="${recipeCategory.name}" 
-                           th:href="'/recipes?categoryId=' + ${recipeCategory.id}
-                                                + '&type=' + ${recipeCategory.TYPE}">Category</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <h1 th:text="${title}">Default Heading</h1>
+    
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipeCategory : ${recipeCategories}">
+                        <td th:text="${recipeCategory.id}">#</td>
+                        <td>
+                            <a th:text="${recipeCategory.name}" 
+                                th:href="'/recipes?categoryId=' + ${recipeCategory.id}
+                                                    + '&type=' + ${recipeCategory.TYPE}">Category</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
     </body>

@@ -5,7 +5,7 @@
 
 /* HEADER */
 header {
-    background-color: ghostwhite;
+    background-color: #e5e5e5;
 }
 
 /* BODY CONTENT */
@@ -23,6 +23,7 @@ header {
 
 .footer-container {
     margin-top: 7px;
+    padding: 0 20px;
     background-color: #e5e5e5;
 }
 

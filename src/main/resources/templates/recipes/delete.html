@@ -8,38 +8,42 @@
         <header th:replace="fragments :: header"></header>
 
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <!-- Delete Form -->
-        <form method="post" action="/recipes/delete">
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Recipe Names</th>
-                        <th>Cuisine</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="recipe : ${recipes}">
-                        <td><input id="inputCheckbox" type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
-                        <td th:text="${recipe.name}">recipe name</td>
-                        <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
-                        <td th:text="${recipe.recipeCategory.name}">category</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h1 th:text="${title}">Default Heading</h1>
             
-            <!-- Submit Button -->
-            <input class="btn btn-danger" type="submit" value="Delete" />
-            <button class="btn btn-secondary" type="button" onclick="clearInputCheckboxRecipe()">Clear All</button>
-            <button class="btn btn-warning" type="button" onclick="selectInputCheckboxRecipe()">Select All</button>
+            <!-- Delete Form -->
+            <form method="post" action="/recipes/delete">
+    
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipe Names</th>
+                            <th>Cuisine</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipe : ${recipes}">
+                            <td><input id="inputCheckbox" type="checkbox" name="recipeIds" th:value="${recipe.id}" /></td>
+                            <td th:text="${recipe.name}">recipe name</td>
+                            <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
+                            <td th:text="${recipe.recipeCategory.name}">category</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Submit Button -->
+                <input class="btn btn-danger" type="submit" value="Delete" />
+                <button class="btn btn-secondary" type="button" onclick="clearInputCheckboxRecipe()">Clear All</button>
+                <button class="btn btn-warning" type="button" onclick="selectInputCheckboxRecipe()">Select All</button>
+    
+            </form>
 
-        </form>
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
         <!-- JavaScript -->

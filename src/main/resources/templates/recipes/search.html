@@ -4,44 +4,47 @@
     <body>
         
         <!-- HEADER -->
-
         <header th:replace="fragments :: header"></header>
 
         <!-- BODY CONTENT -->
+        <div class="container">
 
-        <!-- Search Form -->
-        <form method="post" action="/recipes/search">
-            <div class="mb-3">
-                <label class="form-label" for="inputField">Enter recipe to search:</label>
-                <input class="form-control" id="inputField" type="text" name="recipeSearch" />
-            </div>
-            <button class="btn btn-primary" type="submit">Search</button>
-            <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
-        </form>
-        <br>
+            <h1 th:text="${title}">Default Heading</h1>
+            
+            <!-- Search Form -->
+            <form method="post" action="/recipes/search">
+                <div class="mb-3">
+                    <label class="form-label" for="inputField">Enter recipe to search:</label>
+                    <input class="form-control" id="inputField" type="text" name="recipeSearch" />
+                </div>
+                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+            </form>
+            <br>
+    
+            <!-- Table of Searched Recipes -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Cuisine</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipe : ${recipes}">
+                        <td th:text="${recipe.id}">recipe id</td>
+                        <td th:text="${recipe.name}">recipe name</td>
+                        <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
+                        <td th:text="${recipe.recipeCategory.name}">cuisine</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <!-- Table of Searched Recipes -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Recipe</th>
-                    <th>Cuisine</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="recipe : ${recipes}">
-                    <td th:text="${recipe.id}">recipe id</td>
-                    <td th:text="${recipe.name}">recipe name</td>
-                    <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
-                    <td th:text="${recipe.recipeCategory.name}">cuisine</td>
-                </tr>
-            </tbody>
-        </table>
+        </div>
 
         <!-- FOOTER -->
-
         <footer th:replace="fragments :: footer"></footer>
 
         <!-- JavaScript -->
