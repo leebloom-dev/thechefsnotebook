@@ -98,8 +98,7 @@ public class RecipeController {
     
     // responds to POST requests at URL "/recipes/create"
     @PostMapping("create")
-    public String processRecipeForm(@ModelAttribute @Valid Recipe newRecipe, 
-    Errors errors, Model model) {
+    public String processRecipeForm(@ModelAttribute @Valid Recipe newRecipe, Errors errors, Model model) {
         
         // error validation if true
         if (errors.hasErrors()) {
@@ -164,6 +163,17 @@ public class RecipeController {
         model.addAttribute("title", "Search Recipes");
         model.addAttribute("recipes", recipes);
         return "recipes/search";
+    }
+
+    // responds to GET requests at URL "/recipes/seleceted"
+    @GetMapping("selected")
+    public String renderSelectedRecipe(@RequestParam Integer recipeId, @RequestParam String recipeName, Model model) {
+        Optional<Recipe> result = recipeRepository.findById(recipeId);
+        Recipe recipe = result.get();
+        
+        model.addAttribute("title", "Recipe: " + recipeName);
+        model.addAttribute("recipe", recipe);
+        return "recipes/selected";
     }
 
 }

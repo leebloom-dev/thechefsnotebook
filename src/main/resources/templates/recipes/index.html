@@ -25,7 +25,7 @@
                     <tr th:each="recipe : ${recipes}">
                         <td th:text="${recipe.id}">recipe id</td>
                         <td><a th:text="${recipe.name}" 
-                               th:href="'/ingredients?recipeId=' + ${recipe.id} + 
+                               th:href="'/recipes/selected?recipeId=' + ${recipe.id} + 
                                             '&recipeName=' + ${recipe.name}">recipe name</a></td>
                         <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
                         <td th:text="${recipe.recipeCategory.name}">cuisine</td>
