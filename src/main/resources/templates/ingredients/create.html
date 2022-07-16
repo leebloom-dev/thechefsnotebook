@@ -11,10 +11,24 @@
 
             <h1 th:text="${title}">Default Heading</h1>
             
+            <!-- Ingredient Form -->
+            <form method="post" action="/ingredients/create">
+                <div class="mb-3">
+                    <label class="form-label" for="inputField">Enter ingredient (3 to 50 characters):</label>
+                    <input class="form-control" type="text" id="inputField" placeholder="Ingredient name" th:field="${ingredient.name}" />
+                    <p class="error" th:errors="${ingredient.name}"></p>
+                </div>
+                <button class="btn btn-success" type="submit" name="recipeId" th:value="${recipeId}">Submit</button>
+                <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+            </form>
+
         </div>
 
         <!-- FOOTER -->
         <footer th:replace="fragments :: footer"></footer>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
 
     </body>
 </html>
