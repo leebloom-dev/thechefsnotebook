@@ -12,7 +12,7 @@
             <h1 th:text="${title}">Default Heading</h1>
     
             <!-- Form to create recipe category -->
-            <form method="post" action="/recipes/category/create">
+            <form method="post" action="'/recipes/category/create?recipeId=' + ${recipe.id} + '&recipeName=' + ${recipe.name}">
                 <div class="mb-3">
                     <label class="form-label" for="inputField">Enter a category for a recipe:</label>
                     <input class="form-control" id="inputField" placeholder="Recipe Category" th:field="${recipeCategory.name}" />
