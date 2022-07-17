@@ -1,5 +1,7 @@
 package com.thechefsnotebook.controllers;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thechefsnotebook.data.IngredientRepository;
+import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Ingredient;
+import com.thechefsnotebook.models.Recipe;
 
 @Controller
 @RequestMapping("ingredients") // URL: localhost:8080/ingredients
@@ -22,9 +26,19 @@ public class IngredientsController {
     @Autowired
     IngredientRepository ingredientRepository;
 
+    @Autowired
+    RecipeRepository recipeRepository;
+
     // Responds to GET requests at '/ingredients'
     @GetMapping
-    public String displayIngredients(Model model) {
+    public String displayIngredients(@RequestParam(required = false) Integer recipeId, Model model) {
+        if (recipeId != null) {
+            Optional<Recipe> result = recipeRepository.findById(recipeId);
+            Recipe recipe = result.get();
+            model.addAttribute("title", recipe.getName());
+            return "ingredients/index";
+        }
+
         model.addAttribute("title", "Ingredients");
         model.addAttribute("ingredients", ingredientRepository.findAll());
         return "ingredients/index";
@@ -70,5 +84,28 @@ public class IngredientsController {
 
         return "redirect:";
     }
+
+    // Responds to GET requests at '/ingredients/add'
+    @GetMapping("add")
+    public String renderAddForm(Model model) {
+        model.addAttribute("title", "Select Recipe to Add Ingredient");
+        model.addAttribute("recipes", recipeRepository.findAll());
+        return "ingredients/add";
+    }
+
+    // Responds to POST requests at '/ingredients/add'
+    @PostMapping("add")
+    public String processAddForm(@RequestParam() Integer recipeId, Model model) {
+        Optional<Recipe> result = recipeRepository.findById(recipeId);
+        Recipe recipe = result.get();
+
+        model.addAttribute("title", recipe.getName());
+        return "redirect:?recipeId=" + recipe.getId();
+        // TODO: After user selects a recipe to add an ingredient, redirect to seperate page
+        // TODO: User types ingredient name in a form.
+        // TODO: Submit form to a POST mapping controller method
+        // TODO: Ingredient should be saved to the recipe object
+    }
+
 
 }

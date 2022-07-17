@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
+        
+        <!-- HEADER -->
+        <header th:replace="fragments :: header"></header>
+
+        <!-- BODY CONTENT -->
+        <div class="container">
+
+            <h1 th:text="${title}">Default Heading</h1>
+
+            <!-- Form: Select a recipe -->
+            <form method="post" action="/ingredients/add">
+                
+                <!-- Table of Recipes -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Recipe</th>
+                            <th>Cuisine</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recipe : ${recipes}">
+                            <td><input type="radio" name="recipeId" th:value="${recipe.id}" /></td>
+                            <td th:text="${recipe.name}">recipe name</td>
+                            <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
+                            <td th:text="${recipe.recipeCategory.name}">cuisine</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" type="submit">Submit</button>
+
+            </form>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer th:replace="fragments :: footer"></footer>
+
+    </body>
+</html>
