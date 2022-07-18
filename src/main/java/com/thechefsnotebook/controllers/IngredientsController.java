@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -107,12 +108,42 @@ public class IngredientsController {
         Recipe recipe = result.get();
     
         model.addAttribute("title", recipe.getName());
-        return "redirect:?recipeId=" + recipe.getId();
-        // TODO: After user selects a recipe to add an ingredient, redirect to seperate page
-        // TODO: User types ingredient name in a form.
-        // TODO: Submit form to a POST mapping controller method
-        // TODO: Ingredient should be saved to the recipe object
+        return "redirect:add/" + recipe.getId() + "/" + recipe.getName();
     }
 
+
+    // TODO:
+    /*
+     * You created a repository just for ingredients.
+     * You could refactor the ingredient repository to:
+     * 
+     * ID | Ingredient | Category
+     * --------------------------
+     * x  | Sage       | Spice
+     * y  | Milk       | Dairy
+     * 
+     * When you create a recipe, you can then add an extra input
+     * field that allows the user to select ingredients on the same 
+     * Create Recipe Page. That will allow the user to add a new recipe to the 
+     * recipe repository with ID, Name, Cuisine, Category, and List of Ingredients.
+     */
+
+
+    // Responds to GET requests at '/ingredients/add/{recipeId}/{recipeName}'
+    @GetMapping("add/{recipeId}/{recipeName}")
+    public String renderAddIngredientToRecipeForm(@PathVariable int recipeId, @PathVariable String recipeName, Model model) {
+        model.addAttribute("title", "Add Ingredients: " + recipeName);
+        model.addAttribute("recipes", recipeRepository.findAll());
+        model.addAttribute("ingredient", new Ingredient());
+        return "ingredients/select";
+    }
+
+    // Responds to POST requests at '/ingrdients/add/{recipeId}/{recipeName}'
+    @PostMapping("add/{recipeId}/{recipeName}")
+    public String processAddIngredientToRecipeForm(@ModelAttribute Ingredient newIngredient, @PathVariable int recipeId, @PathVariable String recipeName, Model model) {
+        model.addAttribute("title", "Saved Ingredient to " + recipeName);
+        ingredientRepository.save(newIngredient);
+        return "recipes/index";
+    }
 
 }

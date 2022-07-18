@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+        <!-- HEADER -->
+        <header th:replace="fragments :: header"></header>
+
+        <!-- BODY CONTENT -->
+        <div class="container">
+
+            <h1 th:text="${title}">Default Title</h1>
+
+            <!-- Form: Add ingredient to Recipe -->
+            <form method="post" action="/ingredients/add/${recipeId}/${recipeName}">
+                <!-- User Inputs Ingredient -->
+                <div class="mb-3">
+                    <label class="form-label" for="inputField">Enter ingredient (3 to 50 characters):</label>
+                    <!-- Thymeleaf calls constructor to pass in data -->
+                    <input class="form-control" type="text" id="inputField" placeholder="Ingredient" th:field="${ingredient.name}" />
+                    <!-- Thymeleaf inserts error message related to field -->
+                    <p class="error" th:errors="${ingredient.name}"></p>
+                </div>
+
+                <!-- User Selected Recipe -->
+                <div class="mb-3">
+                    <label class="form-label" for="ingredient">Select an ingredient:</label>
+                    <select class="form-select" id="ingredient" aria-label="Default select example" th:field="${ingredient.recipe}">
+                        <option seleted value=" ">---</option>
+                        <th:block th:each="recipe : ${recipes}">
+                            <option th:text="${recipe.name}" th:value="${recipe.id}">default option</option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-secondary" id="btnClearTextField">Clear</button>
+            </form>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer th:replace="fragments :: footer"></footer>
+
+        <!-- JavaScript -->
+        <script src="/js/script.js"></script>
+
+    </body>
+</html>
