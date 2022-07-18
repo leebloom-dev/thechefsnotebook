@@ -92,13 +92,20 @@ public class IngredientsController {
         model.addAttribute("recipes", recipeRepository.findAll());
         return "ingredients/add";
     }
-
+    
     // Responds to POST requests at '/ingredients/add'
     @PostMapping("add")
-    public String processAddForm(@RequestParam() Integer recipeId, Model model) {
+    public String processAddForm(@RequestParam int recipeId, Model model) {
+        // Valid if user did NOT select a recipe to add an ingredient
+        if (recipeId == 0) {
+            model.addAttribute("title", "Invalid Selection");
+            model.addAttribute("recipes", recipeRepository.findAll());
+            return "ingredients/add";
+        }
+        
         Optional<Recipe> result = recipeRepository.findById(recipeId);
         Recipe recipe = result.get();
-
+    
         model.addAttribute("title", recipe.getName());
         return "redirect:?recipeId=" + recipe.getId();
         // TODO: After user selects a recipe to add an ingredient, redirect to seperate page
