@@ -89,7 +89,6 @@ public class RecipeController {
     public String displayRecipeForm(Model model) {
         model.addAttribute("title", "Recipe Form Page");
         model.addAttribute("recipe", new Recipe()); // same names: variable & class
-        model.addAttribute("recipeCategory", new RecipeCategory());
         model.addAttribute("recipeCategories", recipeCategoryRepository.findAll());
         model.addAttribute("recipeCuisines", recipeCuisineRepository.findAll());
         
