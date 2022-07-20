@@ -11,8 +11,8 @@
 
             <h1 th:text="${title}">Default Heading</h1>
 
-            <!-- Form: Select a recipe -->
-            <form method="post" action="/ingredients/add">
+            <!-- Form: Select a recipe to add ingredients to  -->
+            <form method="get" action="/ingredients/add-ingredient">
                 
                 <!-- Table of Recipes -->
                 <table class="table table-striped">
@@ -33,6 +33,8 @@
                         </tr>
                     </tbody>
                 </table>
+                
+                <!-- Submit Button -->
                 <button class="btn btn-primary" type="submit" name="recipeId" value="0">Submit</button>
 
             </form>
