@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
+
+        <!-- HEADER -->
+        <header th:replace="fragments :: header"></header>
+
+        <!-- BODY CONTENT -->
+
+        <div class="container">
+            <h1 th:text="${title}">Default Title</h1>
+
+            <!-- Form: Add ingredient to selected recipe -->
+            <form method="post" action="/ingredients/add-ingredient">
+                <div class="mb-3">
+                    <input type="hidden" th:field="${recipeIngredient.recipe}" />
+                    <select class="form-select" th:field="${recipeIngredient.ingredient}">
+                        <option selected value=" ">---</option>
+                        <option th:each="ingredient : ${ingredients}"
+                                th:value="${ingredient.id}"
+                                th:text="${ingredient.name}">
+                        </option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Add Ingredient</button>
+            </form>
+        </div>
+
+        <!-- FOOTER -->
+        <footer th:replace="fragments :: footer"></footer>
+
+    </body>
+</html>

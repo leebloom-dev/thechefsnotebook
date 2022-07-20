@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +18,7 @@ import com.thechefsnotebook.data.IngredientRepository;
 import com.thechefsnotebook.data.RecipeRepository;
 import com.thechefsnotebook.models.Ingredient;
 import com.thechefsnotebook.models.Recipe;
+import com.thechefsnotebook.models.dto.RecipeIngredientDTO;
 
 @Controller
 @RequestMapping("ingredients") // URL: localhost:8080/ingredients
@@ -55,7 +55,8 @@ public class IngredientsController {
 
     // Responds to POST requests at '/ingredients/create'
     @PostMapping("create")
-    public String processIngredientForm(@ModelAttribute @Valid Ingredient newIngredient, Errors errors, Model model) {
+    public String processIngredientForm(@ModelAttribute @Valid Ingredient newIngredient, 
+                                        Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Ingredient");
             return "ingredients/create";
@@ -86,64 +87,66 @@ public class IngredientsController {
         return "redirect:";
     }
 
-    // Responds to GET requests at '/ingredients/add'
-    @GetMapping("add")
+    // Responds to GET requests at '/ingredients/select-recipe'
+    @GetMapping("select-recipe")
     public String renderAddForm(Model model) {
         model.addAttribute("title", "Select Recipe to Add Ingredient");
         model.addAttribute("recipes", recipeRepository.findAll());
-        return "ingredients/add";
+        return "ingredients/select-recipe";
     }
     
-    // Responds to POST requests at '/ingredients/add'
-    @PostMapping("add")
-    public String processAddForm(@RequestParam int recipeId, Model model) {
-        // Valid if user did NOT select a recipe to add an ingredient
+    // Responds to GET requests at '/ingredients/add-ingredient'
+    @GetMapping("add-ingredient")
+    public String renderAddIngredient(@RequestParam int recipeId, Model model) {
+
+        // Validate if user did NOT select a recipe to add an ingredient
         if (recipeId == 0) {
             model.addAttribute("title", "Invalid Selection");
             model.addAttribute("recipes", recipeRepository.findAll());
-            return "ingredients/add";
+            return "ingredients/select-recipe";
         }
-        
+
+        // Get recipe from repository using ID to display title
         Optional<Recipe> result = recipeRepository.findById(recipeId);
         Recipe recipe = result.get();
-    
-        model.addAttribute("title", recipe.getName());
-        return "redirect:add/" + recipe.getId() + "/" + recipe.getName();
+        model.addAttribute("title", "Add Ingredient To: " + recipe.getName());
+
+        // Add ingredients to the model
+        model.addAttribute("ingredients", ingredientRepository.findAll());
+
+        // Set recipe object to the recipe-ingredient-dto
+        RecipeIngredientDTO recipeIngredient = new RecipeIngredientDTO();
+        recipeIngredient.setRecipe(recipe);
+
+        // Add recipe-ingredient-dto object to the model
+        model.addAttribute("recipeIngredient", recipeIngredient);
+        
+        return "ingredients/add-ingredient";
     }
 
+    // Responds to POST requests at '/ingredients/add-ingredient'
+    @PostMapping("add-ingredient")
+    public String processAddIngredient(@ModelAttribute @Valid RecipeIngredientDTO recipeIngredient,
+                                       Errors errors,
+                                       Model model) {
 
-    // TODO:
-    /*
-     * You created a repository just for ingredients.
-     * You could refactor the ingredient repository to:
-     * 
-     * ID | Ingredient | Category
-     * --------------------------
-     * x  | Sage       | Spice
-     * y  | Milk       | Dairy
-     * 
-     * When you create a recipe, you can then add an extra input
-     * field that allows the user to select ingredients on the same 
-     * Create Recipe Page. That will allow the user to add a new recipe to the 
-     * recipe repository with ID, Name, Cuisine, Category, and List of Ingredients.
-     */
+        // If no errors
+        if (!errors.hasErrors()) {
+            Recipe recipe = recipeIngredient.getRecipe();
+            Ingredient ingredient = recipeIngredient.getIngredient();
 
+            // If the recipe does NOT contain this ingredient:
+            // Add ingredient to recipe object and save to recipe repository.
+            if(!recipe.getIngredients().contains(ingredient)) {
+                recipe.addIngredient(ingredient);
+                recipeRepository.save(recipe);
+            }
+            return "redirect:add-ingredient?recipeId=" + recipe.getId();
+        }
 
-    // Responds to GET requests at '/ingredients/add/{recipeId}/{recipeName}'
-    @GetMapping("add/{recipeId}/{recipeName}")
-    public String renderAddIngredientToRecipeForm(@PathVariable int recipeId, @PathVariable String recipeName, Model model) {
-        model.addAttribute("title", "Add Ingredients: " + recipeName);
-        model.addAttribute("recipes", recipeRepository.findAll());
-        model.addAttribute("ingredient", new Ingredient());
-        return "ingredients/select";
-    }
+        // If errors exist redirect back to the add-ingredient page
+        return "redirect:add-ingredient";
 
-    // Responds to POST requests at '/ingrdients/add/{recipeId}/{recipeName}'
-    @PostMapping("add/{recipeId}/{recipeName}")
-    public String processAddIngredientToRecipeForm(@ModelAttribute Ingredient newIngredient, @PathVariable int recipeId, @PathVariable String recipeName, Model model) {
-        model.addAttribute("title", "Saved Ingredient to " + recipeName);
-        ingredientRepository.save(newIngredient);
-        return "recipes/index";
     }
 
 }
