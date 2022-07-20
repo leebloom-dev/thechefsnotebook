@@ -20,11 +20,14 @@
                         <th>Cuisine</th>
                         <th>Category</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     <tr th:each="recipe : ${recipes}">
                         <td th:text="${recipe.id}">recipe id</td>
-                        <td th:text="${recipe.name}">recipe name</td>
+                        <td><a th:text=${recipe.name} 
+                               href="/recipes/selected-recipe"
+                               name="recipeId"
+                               th:value="${recipe.id}">recipe name</a></td>
                         <td th:text="${recipe.recipeCuisine.name}">cuisine</td>
                         <td th:text="${recipe.recipeCategory.name}">cuisine</td>
                     </tr>
