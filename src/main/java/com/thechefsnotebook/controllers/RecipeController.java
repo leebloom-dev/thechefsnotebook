@@ -166,12 +166,12 @@ public class RecipeController {
 
     // Responds to GET requets at '/recipes/selected-recipe'
     @GetMapping("selected-recipe")
-    public String renderSelectedRecipe(@RequestParam int recipeId, Model model) {
+    public String renderSelectedRecipe(@RequestParam Integer recipeId, Model model) {
         Optional<Recipe> result = recipeRepository.findById(recipeId);
         Recipe recipe = result.get();
         model.addAttribute("title", "Recipe: " + recipe.getName());
         model.addAttribute("recipe", recipe);
-        return "selected-recipe";
+        return "recipes/selected-recipe";
     }
 
 }
