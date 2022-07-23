@@ -1,0 +1,36 @@
+Compiling Sass/Scss files to CSS files.
+
+The browser can't use scss/sass files by itself.
+Need to compile scss/sass to css.
+
+=======================================
+
+Assume the terminal is located at (scss).
+
+1. Compiling individual files
+
+    The compiled scss file will create a css output file at the 
+    same directory level as the input file.
+
+        sass input.scss output.css
+
+2. Compiling input and output directories using folder paths.
+
+    The compiler will create an output file at a differect directory
+    withing the terminals current terminal's path location. If the 
+    directory doesn't exist, it will create a new directory. The 
+    output file path: scss/public/output.css
+
+        sass ./input.scss:public/output.css
+
+3. Compiling individual files with the --watch flag
+
+    This flag tells Sass to watch your files for any changes and 
+    re-compile them automatically.
+
+        sass --watch input.scss output.css
+
+4. Compiling input and output directories using folder paths with
+   the --watch flag.
+
+        sass --watch ./input.scss:public/output.css
