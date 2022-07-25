@@ -1,0 +1,80 @@
+/*
+    Sass allows us to group multiple CSS declarations together
+    and reuse it in different parts of your file without having 
+    to rewrite the same group of CSS declarations again. 
+*/
+
+// Standard Card Theme
+@mixin theme($theme: #45bdf4) {
+    background-color: $theme;
+    width: 250px;
+    min-width: 250px;
+    // box-shadow (horizontal, vertical, blur effect, spread radius, color)
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+// Card Container
+.card-container {
+    display: flex;
+    flex-direction: row;
+}
+
+    // Card Flexing
+    .flex-item-left {
+        flex: 33%;
+    }
+
+    .flex-item-middle {
+        flex: 33%;
+    }
+
+    .flex-item-right {
+        flex: 33%;
+    }
+
+    .card {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin: 20px auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .card:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+                    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+        .card-header {
+            height: 100px;
+            font-size: 40px;
+            padding: 10px;
+        }
+
+        .card-body {
+            background-color: white;
+            padding: 10px;
+        }
+
+// Card Themes
+.card-standard {
+    @include theme;
+}
+
+.card-warning {
+    @include theme($theme: rgb(255, 247, 141));
+}
+
+.card-danger {
+    @include theme($theme: rgb(255, 144, 144));
+}
+
+@media (max-width: 1000px) {
+    .card-container {
+        flex-direction: column;
+    }
+}
